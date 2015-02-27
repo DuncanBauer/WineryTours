@@ -20,7 +20,9 @@ SOURCES += main.cpp\
 
 HEADERS  += mainwindow.h \
     shorttour.h \
-    mainwindow.h
+    mainwindow.h \
+    Wine.h \
+    List.h
 
 FORMS    += \
     shorttour.ui \
