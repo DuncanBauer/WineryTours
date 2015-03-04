@@ -16,13 +16,15 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     shorttour.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    FIndSmallest.cpp
 
 HEADERS  += mainwindow.h \
     shorttour.h \
     mainwindow.h \
     Wine.h \
-    List.h
+    List.h \
+    Winery.h
 
 FORMS    += \
     shorttour.ui \
