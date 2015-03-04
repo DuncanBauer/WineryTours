@@ -24,7 +24,7 @@ public:
     void Add(Wine newWine);
     void Delete();
     void Empty();
-    WineList<type>& operator =(WineList<type>& list);
+    WineList<type>& operator =(const WineList<type>& list);
 
     bool IsEmpty();
     int  Size();
@@ -51,7 +51,7 @@ WineList<type>::WineList(const WineList &list)
     node<type>* temp2 = list.head;
 
     this->head = temp;
-    this->tail = temp;
+    this->tail = NULL;
     this->size = list.size;
 
     while(temp2 != NULL)
@@ -64,6 +64,7 @@ WineList<type>::WineList(const WineList &list)
         temp  = temp->next;
         tail  = tail->next;
     }
+    delete temp;
 }
 
 template <class type>
@@ -115,7 +116,7 @@ void WineList<type>::Empty()
 }
 
 template <class type>
-WineList<type>& WineList<type>::operator =(WineList<type>& list)
+WineList<type>& WineList<type>::operator =(const WineList<type>& list)
 {
     this->head = list.head;
     this->tail = list.tail;

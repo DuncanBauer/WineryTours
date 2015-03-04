@@ -21,15 +21,15 @@ MainWindow::MainWindow(QWidget *parent) :
         QMessageBox::information(0,"Critical Failure","Winery file has failed to load");
     }
 
-    vector<Winery> WineryVector;
+    vector<Winery> tempWineryVector;
 
     QString tempString;
     int     tempInt;
     float   tempFloat;
-    vector<float> tempVector;
-    WineList<Wine>* tempList = new WineList<Wine>();
-    Winery* tempWinery       = new Winery();
-    Wine*   tempWine         = new Wine();
+    vector<float>* tempVector = new vector<float>();
+    WineList<Wine>* tempList  = new WineList<Wine>();
+    Winery* tempWinery        = new Winery();
+    Wine*   tempWine          = new Wine();
 
     // Loops until the end of the file is reached
     while(!wineryInput.atEnd())
@@ -37,6 +37,7 @@ MainWindow::MainWindow(QWidget *parent) :
         // Extracts and assigns winery name
         tempString = wineryInput.readLine();
         tempWinery->setName(tempString);
+        qDebug() << "here";
 
         // Extracts and assigns winery number
         tempInt = wineryInput.readLine().toInt();
@@ -49,10 +50,10 @@ MainWindow::MainWindow(QWidget *parent) :
         {
             // Extracts and stores the distance to a certain
             // winery
-            tempVector.push_back(wineryInput.readLine().toFloat());
+            tempVector->push_back(wineryInput.readLine().toFloat());
         }
         // Assigns the vector of neighbors to the wineries neighbors
-        tempWinery->setNeighbors(tempVector);
+        tempWinery->setNeighbors(*tempVector);
 
         // Extracts and assigns the distance to the Canyon Villa
         tempFloat = wineryInput.readLine().toFloat();
@@ -73,9 +74,9 @@ MainWindow::MainWindow(QWidget *parent) :
             tempWine = new Wine();
         }
         // Assigns the list of wines to the wineries wine list
-        tempWinery->setWineList(*tempList);
-        // Pushes the winery onto the wineryVector
-        WineryVector.push_back(*tempWinery);
+        tempWinery->setWineList(tempList);
+        // Pushes the winery onto the tempVector
+        tempWineryVector.push_back(*tempWinery);
 
         // Reads the blank line in the input file between wineries
         tempString = wineryInput.readLine();
@@ -83,7 +84,10 @@ MainWindow::MainWindow(QWidget *parent) :
         // Allocates new memory
         tempWinery = new Winery();
         tempList   = new WineList<Wine>();
+        qDebug() << "here";
     }
+    WineryVector = tempWineryVector;
+
     // Deletes unused allocated memory
     delete tempWinery;
     delete tempList;

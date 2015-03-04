@@ -32,6 +32,18 @@ Winery::~Winery()
 {
 }
 
+Winery& Winery::operator =(const Winery& obj)
+{
+    this->name          = obj.name;
+    this->wineryNum     = obj.wineryNum;
+    this->neighbors     = obj.neighbors;
+    this->winesOffered  = obj.winesOffered;
+    this->NumOfWines    = obj.NumOfWines;
+    this->distanceToMom = obj.distanceToMom;
+    this->visitable     = obj.visitable;
+    return *this;
+}
+
 void Winery::setName(QString newName)
 {
     name = newName;
@@ -47,9 +59,9 @@ void Winery::setNumOfWines(int num)
     NumOfWines = num;
 }
 
-void Winery::setWineList(WineList<Wine> w)
+void Winery::setWineList(WineList<Wine>* w)
 {
-    winesOffered.operator =(w);
+    this->winesOffered.operator =(*w);
     winesOffered.Print();
 }
 
@@ -66,4 +78,40 @@ void Winery::setDistanceToMom(float distance)
 void Winery::setVisitable(bool isVisitable)
 {
     visitable = isVisitable;
+}
+
+QString Winery::getName()
+{
+    return name;
+}
+
+int Winery::getWineryNum()
+{
+    return wineryNum;
+}
+
+WineList<Wine> Winery::getWineList()
+{
+    return winesOffered;
+}
+
+int Winery::getNumOfWines()
+{
+    return NumOfWines;
+}
+
+int Winery::getClosestNeighbor()
+{
+int index =0;
+return index;
+}
+
+float Winery::getDistanceToMom()
+{
+    return distanceToMom;
+}
+
+bool Winery::getVisitable()
+{
+    return visitable;
 }
