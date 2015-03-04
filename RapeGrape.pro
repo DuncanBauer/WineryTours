@@ -15,9 +15,9 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     shorttour.cpp \
-    main.cpp \
-    mainwindow.cpp \
-    FIndSmallest.cpp
+    FIndSmallest.cpp \
+    WineryImplementation.cpp \
+    WineImplementation.cpp
 
 HEADERS  += mainwindow.h \
     shorttour.h \
