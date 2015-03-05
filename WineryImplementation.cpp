@@ -88,20 +88,20 @@ int Winery::getNumOfWines()
     return NumOfWines;
 }
 
-int Winery::getClosestNeighborToVisit(Vector<Winery>& list)
+int Winery::getClosestNeighbor()
 {
-//    int   closest     = this->wineryNum;
-//    float closestDist = 0.0;
+    int   closest     = this->wineryNum;
+    float closestDist = 0.0;
 
-//    for(int index = 0; index < neighbors.size(); index++)
-//    {
-//        if(neighbors[index] < closestDist && )
-//        {
-//            closestDist = neighbors[index];
-//            closest = index;
-//        }
-//    }
-//    return closest;
+    for(int index = 0; index < neighbors.size(); index++)
+    {
+        if(neighbors[index] < closestDist)
+        {
+            closestDist = neighbors[index];
+            closest = index;
+        }
+    }
+    return closest;
 }
 
 float Winery::getDistanceToMom()
