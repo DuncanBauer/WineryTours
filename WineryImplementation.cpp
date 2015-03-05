@@ -11,23 +11,6 @@ Winery::Winery()
     visitable     = true;
 }
 
-Winery::Winery(QString        newName,
-               int            newWineryNum,
-               vector<float>  newNeighbors,
-               WineList<Wine> newWines,
-               int            newNumWines,
-               float          newDistToMom,
-               bool           isVisitable)
-{
-    name          = newName;
-    wineryNum     = newWineryNum;
-    neighbors     = newNeighbors;
-    winesOffered  = newWines;
-    NumOfWines    = newNumWines;
-    distanceToMom = newDistToMom;
-    visitable     = isVisitable;
-}
-
 Winery::~Winery()
 {
 }
@@ -80,6 +63,11 @@ void Winery::setVisitable(bool isVisitable)
     visitable = isVisitable;
 }
 
+void Winery::addNeighbor(float disToNeighbor)
+{
+    neighbors.push_back(disToNeighbor);
+}
+
 QString Winery::getName()
 {
     return name;
@@ -100,10 +88,20 @@ int Winery::getNumOfWines()
     return NumOfWines;
 }
 
-int Winery::getClosestNeighbor()
+int Winery::getClosestNeighborToVisit(Vector<Winery>& list)
 {
-int index =0;
-return index;
+//    int   closest     = this->wineryNum;
+//    float closestDist = 0.0;
+
+//    for(int index = 0; index < neighbors.size(); index++)
+//    {
+//        if(neighbors[index] < closestDist && )
+//        {
+//            closestDist = neighbors[index];
+//            closest = index;
+//        }
+//    }
+//    return closest;
 }
 
 float Winery::getDistanceToMom()
@@ -114,4 +112,17 @@ float Winery::getDistanceToMom()
 bool Winery::getVisitable()
 {
     return visitable;
+}
+
+void Winery::toString()
+{
+    qDebug() << this->getName() << endl
+             << "Winery: " << this->getWineryNum() << endl
+             << "Miles from Canyon Villa: " << this->getDistanceToMom() << endl
+             << "Number of wines available: " << this->getNumOfWines() << endl
+             << "Wines: ";
+
+    this->getWineList().Print();\
+
+    qDebug() << endl;
 }

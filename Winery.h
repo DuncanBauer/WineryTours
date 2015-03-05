@@ -19,13 +19,6 @@ private:
 
 public:
     Winery();
-    Winery(QString        newName,
-           int            newWineryNum,
-           vector<float>  newNeighbors,
-           WineList<Wine> newWines,
-           int            newNumWines,
-           float          newDistToMom,
-           bool           isVisitable);
     ~Winery();
 
     // Overloaded Operators
@@ -39,6 +32,7 @@ public:
     void setNeighbors(vector<float> newNeighbors);
     void setDistanceToMom(float distance);
     void setVisitable(bool isVisatable);
+    void addNeighbor(float disToNeighbor);
 
     // Getters
     QString        getName();
@@ -48,7 +42,9 @@ public:
     int            getClosestNeighbor();
     float          getDistanceToMom();
     bool           getVisitable();
-    QString toString();
+
+    // Output Methods
+    void toString();
 };
 
 #endif // WINERY_H

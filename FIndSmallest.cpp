@@ -11,7 +11,7 @@ int FindClosest(vector<float> myV,int& wineryNum)
         if(smallest>myV[index]&&myV[index]!=0.0)
         {
             smallest = myV[index];
-            wineryNum =index=1;
+            wineryNum =index+1;
         }
     }
     return smallest;
