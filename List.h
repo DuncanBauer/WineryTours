@@ -50,20 +50,21 @@ WineList<type>::WineList(const WineList &list)
     node<type>* temp  = new node<type>();
     node<type>* temp2 = list.head;
 
+    temp->prev = NULL;
     this->head = temp;
-    this->tail = NULL;
     this->size = list.size;
 
     while(temp2 != NULL)
     {
-        temp->prev = NULL;
         temp->wine = temp2->wine;
         temp->next = new node<type>();
+        temp->next->prev = temp;
 
         temp2 = temp2->next;
         temp  = temp->next;
-        tail  = tail->next;
     }
+    tail = temp->prev;
+    temp->prev->next = NULL;
     delete temp;
 }
 
@@ -99,28 +100,61 @@ void WineList<type>::Add(Wine newWine)
 template <class type>
 void WineList<type>::Delete()
 {
-    node<type>* temp = head;
-    head             = head->next;
-    head->prev       = NULL;
-    delete temp;
-    size--;
+    if(head != NULL)
+    {
+        node<type>* temp = head;
+        head             = head->next;
+        if(head != NULL)
+        {
+            head->prev = NULL;
+        }
+        else
+        {
+            tail = NULL;
+        }
+        delete temp;
+        size--;
+    }
 }
 
 template <class type>
 void WineList<type>::Empty()
 {
+    node<type>* temp = head;
     while(head != NULL)
     {
-        Delete();
+        head = head->next;
+        delete temp;
+        temp = head;
     }
+    tail = NULL;
+    size = 0;
 }
 
 template <class type>
 WineList<type>& WineList<type>::operator =(const WineList<type>& list)
 {
-    this->head = list.head;
-    this->tail = list.tail;
+    this->Empty();
+
+    node<type>* temp  = new node<type>();
+    node<type>* temp2 = list.head;
+
+    temp->prev = NULL;
+    this->head = temp;
     this->size = list.size;
+
+    while(temp2 != NULL)
+    {
+        temp->wine = temp2->wine;
+        temp->next = new node<type>();
+        temp->next->prev = temp;
+
+        temp2 = temp2->next;
+        temp  = temp->next;
+    }
+    tail = temp->prev;
+    temp->prev->next = NULL;
+    delete temp;
     return *this;
 }
 

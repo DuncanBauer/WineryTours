@@ -62,7 +62,7 @@ void Winery::setNumOfWines(int num)
 void Winery::setWineList(WineList<Wine>* w)
 {
     this->winesOffered.operator =(*w);
-    winesOffered.Print();
+    delete w;
 }
 
 void Winery::setNeighbors(vector<float> newNeighbors)

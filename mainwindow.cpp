@@ -37,11 +37,12 @@ MainWindow::MainWindow(QWidget *parent) :
         // Extracts and assigns winery name
         tempString = wineryInput.readLine();
         tempWinery->setName(tempString);
-        qDebug() << "here";
+        qDebug() << tempWinery->getName();
 
         // Extracts and assigns winery number
         tempInt = wineryInput.readLine().toInt();
         tempWinery->setWineryNum(tempInt);
+        qDebug() << tempWinery->getWineryNum();
 
         // Extracts number of neighbor wineries and loops
         // for the amount of wineries
@@ -75,6 +76,8 @@ MainWindow::MainWindow(QWidget *parent) :
         }
         // Assigns the list of wines to the wineries wine list
         tempWinery->setWineList(tempList);
+
+        tempWinery->getWineList().Print();
         // Pushes the winery onto the tempVector
         tempWineryVector.push_back(*tempWinery);
 
@@ -84,7 +87,7 @@ MainWindow::MainWindow(QWidget *parent) :
         // Allocates new memory
         tempWinery = new Winery();
         tempList   = new WineList<Wine>();
-        qDebug() << "here";
+        qDebug() << endl;
     }
     WineryVector = tempWineryVector;
 
