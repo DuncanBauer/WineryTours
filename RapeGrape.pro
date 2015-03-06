@@ -14,21 +14,33 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    shorttour.cpp \
     FIndSmallest.cpp \
     WineryImplementation.cpp \
-    WineImplementation.cpp
+    WineImplementation.cpp \
+    customtour.cpp \
+    fulltour.cpp \
+    shorttour.cpp \
+    adminportal.cpp \
+    intour.cpp
 
 HEADERS  += mainwindow.h \
-    shorttour.h \
-    mainwindow.h \
     Wine.h \
     List.h \
-    Winery.h
+    Winery.h \
+    customtour.h \
+    fulltour.h \
+    shorttour.h \
+    adminportal.h \
+    intour.h
 
-FORMS    += \
+FORMS    += customtour.ui \
+    fulltour.ui \
     shorttour.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    adminportal.ui \
+    intour.ui
 
 RESOURCES += \
     Images.qrc
+
+OTHER_FILES += \

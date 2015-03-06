@@ -5,6 +5,7 @@
 #include <QTextStream>
 #include "List.h"
 #include "Winery.h"
+#include "customtour.h"
 #include <QDebug>
 #include <windows.h>
 
@@ -12,7 +13,14 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    qDebug() << 1;
     ui->setupUi(this);
+
+
+    shortWindow = new shortTour();
+    fullWindow  = new FullTour();
+    customWindow = new CustomTour();
+    adminWindow = new AdminPortal();
 
     QFile wineryFile("wineries.txt");
     QTextStream wineryInput(&wineryFile);
@@ -72,6 +80,7 @@ MainWindow::MainWindow(QWidget *parent) :
             tempList->Add(*tempWine);
             tempWine = new Wine();
         }
+        qDebug() << 1;
         // Assigns the list of wines to the wineries wine list
         tempWinery->setWineList(tempList);
 
@@ -80,7 +89,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
         // Reads the blank line in the input file between wineries
         tempString = wineryInput.readLine();
-
+qDebug() << 1;
         // Allocates new memory
         tempWinery = new Winery();
         tempList   = new WineList<Wine>();
@@ -104,4 +113,24 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::on_Custom_clicked()
+{
+    customWindow->show();
+}
+
+void MainWindow::on_Short_clicked()
+{
+    shortWindow ->show();
+}
+
+void MainWindow::on_Full_clicked()
+{
+    fullWindow -> show();
+}
+
+void MainWindow::on_Admin_clicked()
+{
+    adminWindow->show();
 }

@@ -6,9 +6,16 @@ shortTour::shortTour(QWidget *parent) :
     ui(new Ui::shortTour)
 {
     ui->setupUi(this);
+    tourWindow = new inTour();
 }
 
 shortTour::~shortTour()
 {
     delete ui;
+}
+
+void shortTour::on_pushButton_clicked()
+{
+    tourWindow->show();
+    this->close();
 }
