@@ -1,13 +1,6 @@
 #include "mainwindow.h"
-#include "ui_mainwindow.h"
-#include <QFile>
-#include <QMessageBox>
-#include <QTextStream>
-#include "List.h"
-#include "Winery.h"
-#include "customtour.h"
-#include <QDebug>
-#include <windows.h>
+#include <qdebug.h>
+#include <qdir.h>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -22,9 +15,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QFile wineryFile("wineries.txt");
     QTextStream wineryInput(&wineryFile);
-    if(!wineryFile.open(QIODevice::ReadOnly))
+    if(!wineryFile.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         QMessageBox::information(0,"Critical Failure","Winery file has failed to load");
+        qDebug() << QDir::currentPath();
     }
     else
     {
@@ -90,6 +84,7 @@ MainWindow::MainWindow(QWidget *parent) :
             // Allocates new memory
             tempWinery = new Winery();
             tempList   = new WineList<Wine>();
+            tempVector = new vector<float>();
         }
         WineryVector = tempWineryVector;
 
@@ -101,6 +96,7 @@ MainWindow::MainWindow(QWidget *parent) :
         // Deletes unused allocated memory
         delete tempWinery;
         delete tempList;
+        delete tempVector;
         delete tempWine;
 
         // Closes input file

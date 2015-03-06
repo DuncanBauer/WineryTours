@@ -2,12 +2,18 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "Winery.h"
+#include <QFile>
+#include <QMessageBox>
+#include <QTextStream>
 #include <vector>
+#include "ui_mainwindow.h"
 #include "shorttour.h"
 #include "fulltour.h"
 #include "customtour.h"
 #include "adminportal.h"
+#include "List.h"
+#include "Winery.h"
+#include "customtour.h"
 
 namespace Ui {
 class MainWindow;
