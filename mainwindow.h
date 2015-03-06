@@ -34,10 +34,10 @@ private slots:
 private:
     Ui::MainWindow *ui;
     vector<Winery> WineryVector;
-    shortTour*  shortWindow;
-    FullTour*   fullWindow;
-    CustomTour* customWindow;
-    AdminPortal* adminWindow;
+    shortTour*     shortWindow;
+    FullTour*      fullWindow;
+    CustomTour*    customWindow;
+    AdminPortal*   adminWindow;
 };
 
 #endif // MAINWINDOW_H

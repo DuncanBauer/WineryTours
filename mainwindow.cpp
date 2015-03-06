@@ -13,14 +13,12 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    qDebug() << 1;
     ui->setupUi(this);
 
-
-    shortWindow = new shortTour();
-    fullWindow  = new FullTour();
+    shortWindow  = new shortTour();
+    fullWindow   = new FullTour();
     customWindow = new CustomTour();
-    adminWindow = new AdminPortal();
+    adminWindow  = new AdminPortal();
 
     QFile wineryFile("wineries.txt");
     QTextStream wineryInput(&wineryFile);
@@ -28,86 +26,86 @@ MainWindow::MainWindow(QWidget *parent) :
     {
         QMessageBox::information(0,"Critical Failure","Winery file has failed to load");
     }
-
-    vector<Winery> tempWineryVector;
-
-    QString tempString;
-    int     tempInt;
-    float   tempFloat;
-    vector<float>* tempVector = new vector<float>();
-    WineList<Wine>* tempList  = new WineList<Wine>();
-    Winery* tempWinery        = new Winery();
-    Wine*   tempWine          = new Wine();
-
-    // Loops until the end of the file is reached
-    while(!wineryInput.atEnd())
+    else
     {
-        // Extracts and assigns winery name
-        tempString = wineryInput.readLine();
-        tempWinery->setName(tempString);
+        vector<Winery> tempWineryVector;
 
-        // Extracts and assigns winery number
-        tempInt = wineryInput.readLine().toInt();
-        tempWinery->setWineryNum(tempInt);
+        QString tempString;
+        int     tempInt;
+        float   tempFloat;
+        vector<float>* tempVector = new vector<float>();
+        WineList<Wine>* tempList  = new WineList<Wine>();
+        Winery* tempWinery        = new Winery();
+        Wine*   tempWine          = new Wine();
 
-        // Extracts number of neighbor wineries and loops
-        // for the amount of wineries
-        tempInt = wineryInput.readLine().toInt();
-        for(int index = 0; index < tempInt; index++)
+        // Loops until the end of the file is reached
+        while(!wineryInput.atEnd())
         {
-            // Extracts and stores the distance to a certain
-            // winery
-            tempVector->push_back(wineryInput.readLine().toFloat());
+            // Extracts and assigns winery name
+            tempString = wineryInput.readLine();
+            tempWinery->setName(tempString);
+
+            // Extracts and assigns winery number
+            tempInt = wineryInput.readLine().toInt();
+            tempWinery->setWineryNum(tempInt);
+
+            // Extracts number of neighbor wineries and loops
+            // for the amount of wineries
+            tempInt = wineryInput.readLine().toInt();
+            for(int index = 0; index < tempInt; index++)
+            {
+                // Extracts and stores the distance to a certain
+                // winery
+                tempVector->push_back(wineryInput.readLine().toFloat());
+            }
+            // Assigns the vector of neighbors to the wineries neighbors
+            tempWinery->setNeighbors(*tempVector);
+
+            // Extracts and assigns the distance to the Canyon Villa
+            tempFloat = wineryInput.readLine().toFloat();
+            tempWinery->setDistanceToMom(tempFloat);
+
+            // Extracts and assigns the amount of wines the winery
+            // carries and loops for the amount of wines
+            tempInt = wineryInput.readLine().toInt();
+            tempWinery->setNumOfWines(tempInt);
+            for(int jndex = 0; jndex < tempInt; jndex++)
+            {
+                // Extracts / assigns / pushes the name, year, and price
+                // of each wine to a wine list
+                tempWine->SetName(wineryInput.readLine());
+                tempWine->SetYear(wineryInput.readLine().toInt());
+                tempWine->SetPrice(wineryInput.readLine().toFloat());
+                tempList->Add(*tempWine);
+                tempWine = new Wine();
+            }
+            // Assigns the list of wines to the wineries wine list
+            tempWinery->setWineList(tempList);
+
+            // Pushes the winery onto the tempVector
+            tempWineryVector.push_back(*tempWinery);
+
+            // Reads the blank line in the input file between wineries
+            tempString = wineryInput.readLine();
+            // Allocates new memory
+            tempWinery = new Winery();
+            tempList   = new WineList<Wine>();
         }
-        // Assigns the vector of neighbors to the wineries neighbors
-        tempWinery->setNeighbors(*tempVector);
+        WineryVector = tempWineryVector;
 
-        // Extracts and assigns the distance to the Canyon Villa
-        tempFloat = wineryInput.readLine().toFloat();
-        tempWinery->setDistanceToMom(tempFloat);
-
-        // Extracts and assigns the amount of wines the winery
-        // carries and loops for the amount of wines
-        tempInt = wineryInput.readLine().toInt();
-        tempWinery->setNumOfWines(tempInt);
-        for(int jndex = 0; jndex < tempInt; jndex++)
+        for(unsigned int kndex = 0; kndex < WineryVector.size(); kndex++)
         {
-            // Extracts / assigns / pushes the name, year, and price
-            // of each wine to a wine list
-            tempWine->SetName(wineryInput.readLine());
-            tempWine->SetYear(wineryInput.readLine().toInt());
-            tempWine->SetPrice(wineryInput.readLine().toFloat());
-            tempList->Add(*tempWine);
-            tempWine = new Wine();
+            WineryVector[kndex].toString();
         }
-        qDebug() << 1;
-        // Assigns the list of wines to the wineries wine list
-        tempWinery->setWineList(tempList);
 
-        // Pushes the winery onto the tempVector
-        tempWineryVector.push_back(*tempWinery);
+        // Deletes unused allocated memory
+        delete tempWinery;
+        delete tempList;
+        delete tempWine;
 
-        // Reads the blank line in the input file between wineries
-        tempString = wineryInput.readLine();
-qDebug() << 1;
-        // Allocates new memory
-        tempWinery = new Winery();
-        tempList   = new WineList<Wine>();
+        // Closes input file
+        wineryFile.close();
     }
-    WineryVector = tempWineryVector;
-
-    for(int kndex = 0; kndex < WineryVector.size(); kndex++)
-    {
-        WineryVector[kndex].toString();
-    }
-
-    // Deletes unused allocated memory
-    delete tempWinery;
-    delete tempList;
-    delete tempWine;
-
-    // Closes input file
-    wineryFile.close();
 }
 
 MainWindow::~MainWindow()

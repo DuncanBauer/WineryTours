@@ -93,7 +93,7 @@ int Winery::getClosestNeighbor()
     int   closest     = this->wineryNum;
     float closestDist = 0.0;
 
-    for(int index = 0; index < neighbors.size(); index++)
+    for(unsigned int index = 0; index < neighbors.size(); index++)
     {
         if(neighbors[index] < closestDist)
         {
