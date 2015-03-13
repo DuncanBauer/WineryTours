@@ -13,9 +13,7 @@ CustomTour::CustomTour(QWidget *parent, vector<Winery> WineryVector) :
     ui(new Ui::CustomTour)
 {
     ui->setupUi(this);
-    tourWindow = new inTour();
     WineryList = WineryVector;
-
     SetListItems();
 }
 
@@ -48,6 +46,7 @@ void CustomTour::SetUserListItems()
 
 void CustomTour::on_pushButton_clicked()
 {
+    tourWindow = new inTour(NULL, UserWineryList);
     tourWindow->show();
     this->close();
 }

@@ -12,8 +12,10 @@
 #include "customtour.h"
 #include "adminportal.h"
 #include "List.h"
+#include "Wine.h"
 #include "Winery.h"
 #include "customtour.h"
+#include "intour.h"
 
 namespace Ui {
 class MainWindow;
@@ -44,6 +46,7 @@ private:
     FullTour*      fullWindow;
     CustomTour*    customWindow;
     AdminPortal*   adminWindow;
+   // inTour* tourWindow;
 };
 
 #endif // MAINWINDOW_H
