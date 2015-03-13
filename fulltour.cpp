@@ -8,6 +8,8 @@ FullTour::FullTour(QWidget *parent) :
     ui->setupUi(this);
 }
 
+<<<<<<< HEAD
+=======
 FullTour::FullTour(QWidget *parent, vector<Winery> WineryVector) :
     QWidget(parent),
     ui(new Ui::FullTour)
@@ -23,13 +25,17 @@ FullTour::FullTour(QWidget *parent, vector<Winery> WineryVector) :
     }
 }
 
+>>>>>>> a5d31d628648c32e2ec5fbecc714c02f71520129
 FullTour::~FullTour()
 {
     delete ui;
 }
+<<<<<<< HEAD
+=======
 
 void FullTour::on_pushButton_clicked()
 {
     tourWindow->show();
     this->close();
 }
+>>>>>>> a5d31d628648c32e2ec5fbecc714c02f71520129

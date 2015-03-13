@@ -8,6 +8,12 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+<<<<<<< HEAD
+    shortWindow = new shortTour;
+    customWindow = new CustomTour;
+    fullWindow = new FullTour;
+
+=======
     QFile wineryFile("wineries.txt");
     QTextStream wineryInput(&wineryFile);
     if(!wineryFile.open(QIODevice::ReadOnly | QIODevice::Text))
@@ -103,6 +109,7 @@ MainWindow::MainWindow(QWidget *parent) :
         adminWindow  = new AdminPortal(NULL);
 
     }
+>>>>>>> a5d31d628648c32e2ec5fbecc714c02f71520129
 }
 
 MainWindow::~MainWindow()
@@ -112,20 +119,32 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_Custom_clicked()
 {
+<<<<<<< HEAD
+    customWindow -> show();
+=======
     customWindow->show();
+>>>>>>> a5d31d628648c32e2ec5fbecc714c02f71520129
 }
 
 void MainWindow::on_Short_clicked()
 {
+<<<<<<< HEAD
+    shortWindow -> show();
+=======
     shortWindow ->show();
+>>>>>>> a5d31d628648c32e2ec5fbecc714c02f71520129
 }
 
 void MainWindow::on_Full_clicked()
 {
+<<<<<<< HEAD
+    fullWindow->show();
+=======
     fullWindow -> show();
 }
 
 void MainWindow::on_Admin_clicked()
 {
     adminWindow->show();
+>>>>>>> a5d31d628648c32e2ec5fbecc714c02f71520129
 }
