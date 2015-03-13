@@ -6,7 +6,11 @@
    <rect>
     <x>0</x>
     <y>0</y>
+<<<<<<< HEAD
     <width>564</width>
+=======
+    <width>561</width>
+>>>>>>> a5d31d628648c32e2ec5fbecc714c02f71520129
     <height>403</height>
    </rect>
   </property>
@@ -14,9 +18,13 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
+<<<<<<< HEAD
    <string notr="true">#CustomTour
 {background-image: url(:/Downloads/kustom.jpeg);}
 </string>
+=======
+   <string notr="true"/>
+>>>>>>> a5d31d628648c32e2ec5fbecc714c02f71520129
   </property>
   <widget class="QPushButton" name="add">
    <property name="geometry">
@@ -28,9 +36,13 @@
     </rect>
    </property>
    <property name="styleSheet">
+<<<<<<< HEAD
     <string notr="true">color: white;
 background-image: url(:/Downloads/kustom.jpeg);
 font: 13pt &quot;American Typewriter&quot;;</string>
+=======
+    <string notr="true"/>
+>>>>>>> a5d31d628648c32e2ec5fbecc714c02f71520129
    </property>
    <property name="text">
     <string>Add</string>
@@ -46,9 +58,13 @@ font: 13pt &quot;American Typewriter&quot;;</string>
     </rect>
    </property>
    <property name="styleSheet">
+<<<<<<< HEAD
     <string notr="true">color: white;
 background-image: url(:/Downloads/kustom.jpeg);
 font: 13pt &quot;American Typewriter&quot;;</string>
+=======
+    <string notr="true"/>
+>>>>>>> a5d31d628648c32e2ec5fbecc714c02f71520129
    </property>
    <property name="text">
     <string>Remove</string>
@@ -67,6 +83,7 @@ font: 13pt &quot;American Typewriter&quot;;</string>
     <string notr="true">font: italic 26pt &quot;Zapfino&quot;;</string>
    </property>
    <property name="text">
+<<<<<<< HEAD
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Custom Tour...&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
@@ -128,6 +145,47 @@ p, li { white-space: pre-wrap; }
   <zorder>label</zorder>
   <zorder>cuurentList</zorder>
   <zorder>chooseList</zorder>
+=======
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;Custom Tour...&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>370</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string>Start Tour</string>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="listWidget">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>91</y>
+     <width>201</width>
+     <height>241</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="userList">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>90</y>
+     <width>201</width>
+     <height>241</height>
+    </rect>
+   </property>
+  </widget>
+>>>>>>> a5d31d628648c32e2ec5fbecc714c02f71520129
  </widget>
  <resources/>
  <connections/>

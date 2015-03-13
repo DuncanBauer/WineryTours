@@ -14,8 +14,12 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
+<<<<<<< HEAD
    <string notr="true">#FullTour{
 background-image: url(:/Downloads/wine.jpeg);}</string>
+=======
+   <string notr="true"/>
+>>>>>>> a5d31d628648c32e2ec5fbecc714c02f71520129
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
@@ -30,6 +34,7 @@ background-image: url(:/Downloads/wine.jpeg);}</string>
     <string notr="true">font: italic 26pt &quot;Zapfino&quot;;</string>
    </property>
    <property name="text">
+<<<<<<< HEAD
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Full Tour&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
@@ -51,6 +56,35 @@ background-image: url(:/Downloads/wine.jpeg);}</string>
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'.Lucida Grande UI'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:36pt; color:#ffffff;&quot;&gt;List of All Wineries&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+=======
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;Full Tour&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>260</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string>Start Tour</string>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="listWidget">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>60</y>
+     <width>256</width>
+     <height>192</height>
+    </rect>
+>>>>>>> a5d31d628648c32e2ec5fbecc714c02f71520129
    </property>
   </widget>
  </widget>
