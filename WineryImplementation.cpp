@@ -1,6 +1,4 @@
 #include "Winery.h"
-#include <QDebug>
-#include <QString>
 
 Winery::Winery()
 {
@@ -66,6 +64,11 @@ void Winery::setVisitable(bool isVisitable)
 void Winery::addNeighbor(float disToNeighbor)
 {
     neighbors.push_back(disToNeighbor);
+}
+
+void Winery::addWine(Wine newWine)
+{
+    winesOffered.Add(newWine);
 }
 
 QString Winery::getName()

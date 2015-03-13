@@ -8,11 +8,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    shortWindow  = new shortTour();
-    fullWindow   = new FullTour();
-    customWindow = new CustomTour();
-    adminWindow  = new AdminPortal();
-
     QFile wineryFile("wineries.txt");
     QTextStream wineryInput(&wineryFile);
     if(!wineryFile.open(QIODevice::ReadOnly | QIODevice::Text))
@@ -101,6 +96,12 @@ MainWindow::MainWindow(QWidget *parent) :
 
         // Closes input file
         wineryFile.close();
+
+        shortWindow  = new shortTour(NULL, WineryVector);
+        fullWindow   = new FullTour(NULL, WineryVector);
+        customWindow = new CustomTour(NULL, WineryVector);
+        adminWindow  = new AdminPortal(NULL);
+
     }
 }
 

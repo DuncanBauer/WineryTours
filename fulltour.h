@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include "intour.h"
+#include <vector>
+#include "Winery.h"
 
 namespace Ui {
 class FullTour;
@@ -14,6 +16,7 @@ class FullTour : public QWidget
 
 public:
     explicit FullTour(QWidget *parent = 0);
+    explicit FullTour(QWidget *parent, vector<Winery> WineryVector);
     ~FullTour();
 
 private slots:

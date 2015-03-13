@@ -1,10 +1,13 @@
 #ifndef WINERY_H
 #define WINERY_H
 
-using namespace std;
-#include <qstring.h>
-#include "List.h"
+#include <QDebug>
+#include <QString>
 #include <vector>
+#include "List.h"
+#include "Wine.h"
+
+using namespace std;
 
 class Winery
 {
@@ -33,6 +36,7 @@ public:
     void setDistanceToMom(float distance);
     void setVisitable(bool isVisatable);
     void addNeighbor(float disToNeighbor);
+    void addWine(Wine newWine);
 
     // Getters
     QString        getName();

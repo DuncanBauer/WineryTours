@@ -6,7 +6,21 @@ shortTour::shortTour(QWidget *parent) :
     ui(new Ui::shortTour)
 {
     ui->setupUi(this);
+}
+
+shortTour::shortTour(QWidget *parent, vector<Winery> WineryVector) :
+    QWidget(parent),
+    ui(new Ui::shortTour)
+{
+    ui->setupUi(this);
     tourWindow = new inTour();
+
+    Winery temp;
+    for(int i = 0; i < WineryVector.size(); i++)
+    {
+        temp = WineryVector.operator [](i);
+        ui->listWidget->addItem(temp.getName()); //temp.name;
+    }
 }
 
 shortTour::~shortTour()
