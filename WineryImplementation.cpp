@@ -98,7 +98,7 @@ int Winery::getClosestNeighbor()
 
     for(unsigned int index = 0; index < neighbors.size(); index++)
     {
-        if(neighbors[index] < closestDist)
+        if(neighbors[index] < closestDist && this->visitable)
         {
             closestDist = neighbors[index];
             closest = index;

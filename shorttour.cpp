@@ -13,7 +13,8 @@ shortTour::shortTour(QWidget *parent, vector<Winery> WineryVector) :
     ui(new Ui::shortTour)
 {
     ui->setupUi(this);
-    tourWindow = new inTour();
+
+    UserWineryList = WineryVector;
 
     Winery temp;
     for(unsigned int i = 0; i < WineryVector.size(); i++)
@@ -30,6 +31,26 @@ shortTour::~shortTour()
 
 void shortTour::on_pushButton_clicked()
 {
-    tourWindow->show();
-    this->close();
+    if(ui->listWidget->currentItem() != NULL)
+    {
+        int wineryNum;
+        int itemIndex; = ui->listWidget->currentRow();
+        int numOfWineries = ui->spinBox->text().toInt();
+        Winery tempWinery = UserWineryList.operator [](itemIndex);
+
+        vector<Winery> temp;
+        temp.push_back(tempWinery);
+
+        for(int index = 0; index < numOfWineries - 2; index++)
+        {
+            wineryNum = tempWinery.getClosestNeighbor();
+            temp.pop_back(UserWineryList.operator [](wineryNum));
+            tempWinery = UserWineryList.operator [](wineryNum);
+            tempWinery.setVisitable(false);
+        }
+
+        tourWindow = new inTour(NULL, UserWineryList);
+        tourWindow->show();
+        this->close();
+    }
 }

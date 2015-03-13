@@ -24,6 +24,7 @@ private slots:
 
 private:
     Ui::shortTour *ui;
+    vector<Winery> UserWineryList;
     inTour* tourWindow;
 };
 
