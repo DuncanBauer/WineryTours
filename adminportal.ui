@@ -16,9 +16,9 @@
   <widget class="QPushButton" name="addWinery">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>240</y>
-     <width>75</width>
+     <x>254</x>
+     <y>230</y>
+     <width>71</width>
      <height>23</height>
     </rect>
    </property>
@@ -29,9 +29,9 @@
   <widget class="QPushButton" name="addWine">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>64</x>
      <y>230</y>
-     <width>75</width>
+     <width>71</width>
      <height>23</height>
     </rect>
    </property>
@@ -62,9 +62,9 @@
   <widget class="QPushButton" name="deleteWine">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>64</x>
      <y>260</y>
-     <width>75</width>
+     <width>71</width>
      <height>23</height>
     </rect>
    </property>

@@ -42,9 +42,10 @@ public:
     QString        getName();
     int            getWineryNum();
     WineList<Wine> getWineList();
-    Wine&          getWine(int index);
+    Wine           getWine(int index);
     int            getNumOfWines();
-    int            getClosestNeighbor();
+    vector<float>  getNeighbors();
+    int            getClosestNeighbor(vector<Winery> WineryVector);
     float          getDistanceToMom();
     bool           getVisitable();
 

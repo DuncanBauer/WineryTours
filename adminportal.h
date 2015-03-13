@@ -7,6 +7,7 @@
 #include "newwine.h"
 
 vector<Winery> ReadFile(QString fileName);
+void WriteFile(QString fileName, vector<Winery> WineryVector);
 
 namespace Ui {
 class AdminPortal;

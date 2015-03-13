@@ -42,7 +42,7 @@ void shortTour::on_pushButton_clicked()
 
         for(unsigned int index = 0; index < numOfWineries - 1; index++)
         {
-            wineryNum = tempWinery.getClosestNeighbor();
+            wineryNum = tempWinery.getClosestNeighbor(UserWineryList);
             temp.push_back(UserWineryList.operator [](wineryNum));
             tempWinery = UserWineryList.operator [](wineryNum);
             tempWinery.setVisitable(false);

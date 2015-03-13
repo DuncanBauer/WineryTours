@@ -16,6 +16,7 @@ public:
     QString GetName();
     int     GetYear();
     float   GetPrice();
+    void    Print();
 
 private:
     QString name;

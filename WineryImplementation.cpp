@@ -81,7 +81,7 @@ int Winery::getWineryNum()
     return wineryNum;
 }
 
-Wine& Winery::getWine(int index)
+Wine Winery::getWine(int index)
 {
     return winesOffered.operator [](index);
 }
@@ -96,20 +96,28 @@ int Winery::getNumOfWines()
     return NumOfWines;
 }
 
-int Winery::getClosestNeighbor()
+vector<float> Winery::getNeighbors()
+{
+    return neighbors;
+}
+
+int Winery::getClosestNeighbor(vector<Winery> WineryVector)
 {
     unsigned int index = 0;
-    float smallest     =  neighbors.operator [](index);
+    int wineryIndex    = 0;
+    float smallest     = neighbors.operator [](index);
+    Winery temp;
 
     for(index = 1; index < neighbors.size(); index++)
     {
-        if(smallest > neighbors.operator [](index) && neighbors.operator [](index) != 0.0)
+        temp = WineryVector.operator [](index);
+        if(temp.getVisitable() && (smallest > neighbors.operator [](index) && neighbors.operator [](index) != 0.0))
         {
             smallest  = neighbors.operator [](index);
-            wineryNum = index + 1;
+            wineryIndex = index + 1;
         }
     }
-    return smallest;
+    return wineryIndex;
 }
 
 float Winery::getDistanceToMom()
@@ -129,8 +137,6 @@ void Winery::toString()
              << "Miles from Canyon Villa: " << this->getDistanceToMom() << endl
              << "Number of wines available: " << this->getNumOfWines() << endl
              << "Wines: ";
-
-    this->getWineList().Print();\
 
     qDebug() << endl;
 }

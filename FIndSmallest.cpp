@@ -117,3 +117,49 @@ vector<Winery> ReadFile(QString fileName)
     }
     return tempWineryVector;
 }
+
+void WriteFile(QString fileName, vector<Winery> WineryVector)
+{
+    QFile wineryFile(fileName);
+    QTextStream wineryOutput(&wineryFile);
+    if(!wineryFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
+    {
+        QMessageBox::information(0,"Critical Failure","Winery file has failed to load");
+        qDebug() << QDir::currentPath();
+    }
+    else
+    {
+        qDebug() << QDir::currentPath();
+        qDebug() << 2;
+        Winery currentWinery;
+        for(unsigned int index = 0; index < WineryVector.size(); index++)
+        {
+            currentWinery = WineryVector.operator [](index);
+            wineryOutput << currentWinery.getName()      << endl
+                         << currentWinery.getWineryNum() << endl
+                         << WineryVector.size()          << endl;
+
+            for(unsigned int jndex = 0; jndex < WineryVector.size(); jndex++)
+            {
+                wineryOutput << currentWinery.getNeighbors().operator [](jndex) << endl;
+            }
+
+            wineryOutput << currentWinery.getDistanceToMom() << endl
+                         << currentWinery.getNumOfWines()    << endl;
+
+            WineList<Wine> temp = currentWinery.getWineList();
+            Wine tempWine;
+            int jndex = 0;
+            while(jndex < currentWinery.getNumOfWines())
+            {
+                tempWine = temp.operator [](jndex);
+                wineryOutput << tempWine.GetName()  << endl
+                             << tempWine.GetYear()  << endl
+                             << tempWine.GetPrice() << endl;
+                jndex++;
+            }
+            wineryOutput << endl;
+        }
+        wineryFile.close();
+    }
+}

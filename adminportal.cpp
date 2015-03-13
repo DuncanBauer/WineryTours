@@ -37,7 +37,8 @@ void AdminPortal::on_addWine_clicked()
 {
     if(ui->wineries->currentItem() != NULL)
     {
-        unsigned int index = ui->wineries->currentRow() - 1;
+        unsigned int index = ui->wineries->currentRow();
+        qDebug() << index;
         newWine* w = new newWine(NULL, WineryVector, index);
         connect(w, SIGNAL(changeSuccess()), this, SLOT(RereadList()));
         w->show();

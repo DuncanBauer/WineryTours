@@ -6,11 +6,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     WineryVector = ReadFile("wineries.txt");
-
-    for(unsigned int kndex = 0; kndex < WineryVector.size(); kndex++)
-    {
-        WineryVector[kndex].toString();
-    }
 }
 
 MainWindow::~MainWindow()

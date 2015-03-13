@@ -30,10 +30,12 @@ void newWine::on_add_clicked()
         newWine.SetName(ui->name->text());
         newWine.SetYear(ui->year->text().toInt());
         newWine.SetPrice(ui->price->text().toFloat());
-        Winery tempWinery;
-        tempWinery = WineryList.operator [](wineryIndex);
-        tempWinery.addWine(newWine);
-        // Save function here
+
+        Winery* tempWinery = &(WineryList.operator [](wineryIndex));
+        tempWinery->addWine(newWine);
+        tempWinery->setNumOfWines(tempWinery->getNumOfWines() + 1);
+
+        WriteFile("wineries.txt", WineryList);
         emit changeSuccess();
         this->close();
     }

@@ -6,6 +6,8 @@
 #include "Winery.h"
 #include "Wine.h"
 
+void WriteFile(QString fileName, vector<Winery> WineryVector);
+
 namespace Ui {
 class newWine;
 }

@@ -1,4 +1,5 @@
 #include "Wine.h"
+#include <QDebug>
 
 Wine::Wine()
 {
@@ -39,4 +40,11 @@ int Wine::GetYear()
 float Wine::GetPrice()
 {
     return price;
+}
+
+void Wine::Print()
+{
+    qDebug() << name  << endl
+             << year  << endl
+             << price << endl;
 }

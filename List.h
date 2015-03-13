@@ -8,7 +8,7 @@ using namespace std;
 template <class type>
 struct node
 {
-    type  wine;
+    type  data;
     node* next;
     node* prev;
 };
@@ -21,15 +21,15 @@ public:
     WineList(const WineList& list);
     ~WineList();
 
-    void Add(Wine newWine);
+    void Add(type newWine);
     void Delete();
     void Empty();
     WineList<type>& operator =(const WineList<type>& list);
-    Wine& operator [](int index);
+    type operator [](int index);
 
     bool IsEmpty();
     int  Size();
-    void Print();
+    type GetData(int index);
 
 private:
     node<type>* head;
@@ -46,7 +46,7 @@ WineList<type>::WineList()
 }
 
 template <class type>
-WineList<type>::WineList(const WineList &list)
+WineList<type>::WineList(const WineList<type> &list)
 {
     node<type>* temp  = new node<type>();
     node<type>* temp2 = list.head;
@@ -57,7 +57,7 @@ WineList<type>::WineList(const WineList &list)
 
     while(temp2 != NULL)
     {
-        temp->wine = temp2->wine;
+        temp->data = temp2->data;
         temp->next = new node<type>();
         temp->next->prev = temp;
 
@@ -76,10 +76,10 @@ WineList<type>::~WineList()
 }
 
 template <class type>
-void WineList<type>::Add(Wine newWine)
+void WineList<type>::Add(type newData)
 {
     node<type>* newNode = new node<type>();
-    newNode->wine       = newWine;
+    newNode->data       = newData;
 
     if(IsEmpty())
     {
@@ -101,7 +101,7 @@ void WineList<type>::Add(Wine newWine)
 template <class type>
 void WineList<type>::Delete()
 {
-    if(head != NULL)
+    if(!IsEmpty())
     {
         node<type>* temp = head;
         head             = head->next;
@@ -122,7 +122,7 @@ template <class type>
 void WineList<type>::Empty()
 {
     node<type>* temp = head;
-    while(head != NULL)
+    while(!IsEmpty())
     {
         head = head->next;
         delete temp;
@@ -133,19 +133,21 @@ void WineList<type>::Empty()
 }
 
 template <class type>
-Wine& WineList<type>::operator [](int index)
+type WineList<type>::operator [](int index)
 {
+    type tempWine;
     if(index < size)
     {
         node<type>* temp = head;
-        Wine tempWine;
-        for(int jndex = 0; jndex < index; jndex++)
+        int jndex = 0;
+        while(jndex < index)
         {
             temp = temp->next;
+            jndex++;
         }
-        tempWine = temp->wine;
-        return tempWine;
+        tempWine = temp->data;
     }
+    return tempWine;
 }
 
 template <class type>
@@ -162,7 +164,7 @@ WineList<type>& WineList<type>::operator =(const WineList<type>& list)
 
     while(temp2 != NULL)
     {
-        temp->wine = temp2->wine;
+        temp->data = temp2->data;
         temp->next = new node<type>();
         temp->next->prev = temp;
 
@@ -188,14 +190,14 @@ int WineList<type>::Size()
 }
 
 template <class type>
-void WineList<type>::Print()
+type WineList<type>::GetData(int index)
 {
     node<type>* temp = head;
-    while(temp != NULL)
+    for(int jndex = 0; jndex < index; index++)
     {
-        qDebug() << temp->wine.GetName();
         temp = temp->next;
     }
+    return temp->data;
 }
 
 #endif // LIST_H
