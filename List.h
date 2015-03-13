@@ -21,7 +21,11 @@ public:
     WineList(const WineList& list);
     ~WineList();
 
+<<<<<<< HEAD
+    void Add(Wine newNode);
+=======
     void Add(Wine newWine);
+>>>>>>> a5d31d628648c32e2ec5fbecc714c02f71520129
     void Delete();
     void Empty();
     WineList<type>& operator =(const WineList<type>& list);
