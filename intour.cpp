@@ -14,12 +14,23 @@ inTour::inTour(QWidget *parent, vector<Winery> WineryVector) :
 {
     ui->setupUi(this);
     WineryList = WineryVector;
-    ui->wineList->addItem(WineryVector.operator[](0).getName());
+    numOfWineries = WineryVector.size();
+    currentWineryIndex = 0;
+    currentWinery = &WineryVector.operator [](currentWineryIndex);
 
+    for(int index = 0; index < currentWinery->getNumOfWines(); index++)
+    {
+        ui->wineList->addItem(currentWinery->getWine(index).GetName());
+    }
 
 }
 
 inTour::~inTour()
 {
     delete ui;
+}
+
+void inTour::on_nextButton_clicked()
+{
+    currentWineryIndex++;
 }

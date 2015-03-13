@@ -21,14 +21,11 @@ public:
     WineList(const WineList& list);
     ~WineList();
 
-<<<<<<< HEAD
-    void Add(Wine newNode);
-=======
     void Add(Wine newWine);
->>>>>>> a5d31d628648c32e2ec5fbecc714c02f71520129
     void Delete();
     void Empty();
     WineList<type>& operator =(const WineList<type>& list);
+    Wine& operator [](int index);
 
     bool IsEmpty();
     int  Size();
@@ -133,6 +130,22 @@ void WineList<type>::Empty()
     }
     tail = NULL;
     size = 0;
+}
+
+template <class type>
+Wine& WineList<type>::operator [](int index)
+{
+    if(index < size)
+    {
+        node<type>* temp = head;
+        Wine tempWine;
+        for(int jndex = 0; jndex < index; jndex++)
+        {
+            temp = temp->next;
+        }
+        tempWine = temp->wine;
+        return tempWine;
+    }
 }
 
 template <class type>

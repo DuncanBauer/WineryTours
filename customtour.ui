@@ -6,186 +6,72 @@
    <rect>
     <x>0</x>
     <y>0</y>
-<<<<<<< HEAD
-    <width>564</width>
-=======
-    <width>561</width>
->>>>>>> a5d31d628648c32e2ec5fbecc714c02f71520129
-    <height>403</height>
+    <width>511</width>
+    <height>385</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <property name="styleSheet">
-<<<<<<< HEAD
-   <string notr="true">#CustomTour
-{background-image: url(:/Downloads/kustom.jpeg);}
-</string>
-=======
-   <string notr="true"/>
->>>>>>> a5d31d628648c32e2ec5fbecc714c02f71520129
-  </property>
   <widget class="QPushButton" name="add">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>130</y>
-     <width>71</width>
-     <height>32</height>
+     <x>220</x>
+     <y>160</y>
+     <width>75</width>
+     <height>23</height>
     </rect>
-   </property>
-   <property name="styleSheet">
-<<<<<<< HEAD
-    <string notr="true">color: white;
-background-image: url(:/Downloads/kustom.jpeg);
-font: 13pt &quot;American Typewriter&quot;;</string>
-=======
-    <string notr="true"/>
->>>>>>> a5d31d628648c32e2ec5fbecc714c02f71520129
    </property>
    <property name="text">
     <string>Add</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="remove">
+  <widget class="QListWidget" name="userList">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>220</y>
-     <width>71</width>
-     <height>32</height>
+     <x>300</x>
+     <y>70</y>
+     <width>181</width>
+     <height>251</height>
     </rect>
-   </property>
-   <property name="styleSheet">
-<<<<<<< HEAD
-    <string notr="true">color: white;
-background-image: url(:/Downloads/kustom.jpeg);
-font: 13pt &quot;American Typewriter&quot;;</string>
-=======
-    <string notr="true"/>
->>>>>>> a5d31d628648c32e2ec5fbecc714c02f71520129
-   </property>
-   <property name="text">
-    <string>Remove</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>15</y>
-     <width>281</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: italic 26pt &quot;Zapfino&quot;;</string>
-   </property>
-   <property name="text">
-<<<<<<< HEAD
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Custom Tour...&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
-  <widget class="QTextBrowser" name="chooseList">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>100</y>
-     <width>211</width>
-     <height>261</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgba(231, 153, 77, 140);
-
-color: white;
-
-
-font: 13pt &quot;American Typewriter&quot;;</string>
-   </property>
-   <property name="html">
-    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'American Typewriter'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Wineries to choose from..&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;//when wineries are clicked on them button add is pressed move them to the currrent tour side&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
-  <widget class="QTextBrowser" name="cuurentList">
-   <property name="geometry">
-    <rect>
-     <x>325</x>
-     <y>100</y>
-     <width>221</width>
-     <height>261</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">
-
-background-color: rgba(231, 153, 77, 140);
-
-color: white;
-font: 13pt &quot;American Typewriter&quot;;</string>
-   </property>
-   <property name="html">
-    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'American Typewriter'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;You're Custom list of wineries...&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;//will show the list of wineries the customer has chose so far, and will give them option remove  one if they want to&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
-  <zorder>add</zorder>
-  <zorder>remove</zorder>
-  <zorder>label</zorder>
-  <zorder>cuurentList</zorder>
-  <zorder>chooseList</zorder>
-=======
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;Custom Tour...&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton">
-   <property name="geometry">
-    <rect>
-     <x>240</x>
-     <y>370</y>
-     <width>75</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="text">
-    <string>Start Tour</string>
    </property>
   </widget>
   <widget class="QListWidget" name="listWidget">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>91</y>
-     <width>201</width>
-     <height>241</height>
+     <x>30</x>
+     <y>70</y>
+     <width>181</width>
+     <height>251</height>
     </rect>
    </property>
   </widget>
-  <widget class="QListWidget" name="userList">
+  <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>330</x>
-     <y>90</y>
-     <width>201</width>
-     <height>241</height>
+     <x>220</x>
+     <y>340</y>
+     <width>75</width>
+     <height>23</height>
     </rect>
    </property>
+   <property name="text">
+    <string>Start Tour</string>
+   </property>
   </widget>
->>>>>>> a5d31d628648c32e2ec5fbecc714c02f71520129
+  <widget class="QPushButton" name="remove">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>200</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Remove</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

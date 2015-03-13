@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #-------------------------------------------------
 #
 # Project created by QtCreator 2015-02-12T19:47:42
@@ -12,76 +11,29 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = RapeGrape
 TEMPLATE = app
 
-
-SOURCES += main.cpp\
-        mainwindow.cpp \
-    shorttour.cpp \
+SOURCES += adminportal.cpp \
+    FIndSmallest.cpp \
     main.cpp \
     mainwindow.cpp \
-    customtour.cpp \
-    fulltour.cpp
-
-HEADERS  += mainwindow.h \
-    shorttour.h \
-    mainwindow.h \
-    Wine.h \
-    List.h \
-    customtour.h \
-    fulltour.h
-
-FORMS    += \
-    shorttour.ui \
-    mainwindow.ui \
-    customtour.ui \
-    fulltour.ui
-
-RESOURCES += \
-    Images.qrc
-=======
-#-------------------------------------------------
-#
-# Project created by QtCreator 2015-02-12T19:47:42
-#
-#-------------------------------------------------
-
-QT       += core gui
-
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-
-TARGET = RapeGrape
-TEMPLATE = app
-
-
-SOURCES += main.cpp\
-        mainwindow.cpp \
-    FIndSmallest.cpp \
-    WineryImplementation.cpp \
+    intour.cpp \
     WineImplementation.cpp \
-    customtour.cpp \
-    fulltour.cpp \
+    WineryImplementation.cpp \
     shorttour.cpp \
-    adminportal.cpp \
-    intour.cpp
+    customtour.cpp
 
 HEADERS  += mainwindow.h \
+    adminportal.h \
+    Winery.h \
     Wine.h \
     List.h \
-    Winery.h \
-    customtour.h \
-    fulltour.h \
+    intour.h \
     shorttour.h \
-    adminportal.h \
-    intour.h
+    customtour.h
 
-FORMS    += customtour.ui \
-    fulltour.ui \
-    shorttour.ui \
+FORMS    += adminportal.ui \
     mainwindow.ui \
-    adminportal.ui \
-    intour.ui
+    intour.ui \
+    shorttour.ui \
+    customtour.ui
 
 RESOURCES += \
-    Images.qrc
-
-OTHER_FILES += \
->>>>>>> a5d31d628648c32e2ec5fbecc714c02f71520129

@@ -1,5 +1,4 @@
 #include "shorttour.h"
-#include "ui_shorttour.h"
 
 shortTour::shortTour(QWidget *parent) :
     QWidget(parent),
@@ -34,23 +33,27 @@ void shortTour::on_pushButton_clicked()
     if(ui->listWidget->currentItem() != NULL)
     {
         int wineryNum;
-        int itemIndex; = ui->listWidget->currentRow();
-        int numOfWineries = ui->spinBox->text().toInt();
-        Winery tempWinery = UserWineryList.operator [](itemIndex);
+        int itemIndex = ui->listWidget->currentRow();
+        unsigned int numOfWineries = ui->spinBox->text().toInt();
 
-        vector<Winery> temp;
-        temp.push_back(tempWinery);
-
-        for(int index = 0; index < numOfWineries - 2; index++)
+        if(numOfWineries <= UserWineryList.size() && numOfWineries != 0)
         {
-            wineryNum = tempWinery.getClosestNeighbor();
-            temp.pop_back(UserWineryList.operator [](wineryNum));
-            tempWinery = UserWineryList.operator [](wineryNum);
-            tempWinery.setVisitable(false);
-        }
+            Winery tempWinery = UserWineryList.operator [](itemIndex);
 
-        tourWindow = new inTour(NULL, UserWineryList);
-        tourWindow->show();
-        this->close();
+            vector<Winery> temp;
+            temp.push_back(tempWinery);
+
+            for(unsigned int index = 0; index < numOfWineries - 1; index++)
+            {
+                wineryNum = tempWinery.getClosestNeighbor();
+                temp.push_back(UserWineryList.operator [](wineryNum));
+                tempWinery = UserWineryList.operator [](wineryNum);
+                tempWinery.setVisitable(false);
+            }
+
+            tourWindow = new inTour(NULL, temp);
+            tourWindow->show();
+            this->close();
+        }
     }
 }

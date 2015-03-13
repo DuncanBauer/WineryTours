@@ -81,6 +81,11 @@ int Winery::getWineryNum()
     return wineryNum;
 }
 
+Wine& Winery::getWine(int index)
+{
+    return winesOffered.operator [](index);
+}
+
 WineList<Wine> Winery::getWineList()
 {
     return winesOffered;

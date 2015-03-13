@@ -1,5 +1,6 @@
 
 #include <vector>
+#include "Winery.h"
 using namespace std;
 
 int FindClosest(vector<float> myV, int& wineryNum)
@@ -15,4 +16,12 @@ int FindClosest(vector<float> myV, int& wineryNum)
         }
     }
     return smallest;
+}
+
+void ResetAll(vector<Winery> wineryVector)
+{
+    for(unsigned int index = 0; index < wineryVector.size(); index++)
+    {
+        wineryVector.operator [](index).setVisitable(true);
+    }
 }

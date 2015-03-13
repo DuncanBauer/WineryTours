@@ -2,8 +2,9 @@
 #define SHORTTOUR_H
 
 #include <QWidget>
-#include "intour.h"
 #include <vector>
+#include "ui_shorttour.h"
+#include "intour.h"
 #include "Winery.h"
 
 namespace Ui {

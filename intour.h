@@ -18,9 +18,15 @@ public:
     explicit inTour(QWidget *parent, vector<Winery> WineryVector);
     ~inTour();
 
+private slots:
+    void on_nextButton_clicked();
+
 private:
     Ui::inTour *ui;
     vector<Winery> WineryList;
+    Winery* currentWinery;
+    int numOfWineries;
+    int currentWineryIndex;
 };
 
 #endif // INTOUR_H

@@ -34,7 +34,7 @@ public:
     void setNumOfWines(int num);
     void setNeighbors(vector<float> newNeighbors);
     void setDistanceToMom(float distance);
-    void setVisitable(bool isVisatable);
+    void setVisitable(bool isVisitable);
     void addNeighbor(float disToNeighbor);
     void addWine(Wine newWine);
 
@@ -42,6 +42,7 @@ public:
     QString        getName();
     int            getWineryNum();
     WineList<Wine> getWineList();
+    Wine&          getWine(int index);
     int            getNumOfWines();
     int            getClosestNeighbor();
     float          getDistanceToMom();
