@@ -8,20 +8,24 @@ CustomTour::CustomTour(QWidget *parent) :
     ui->setupUi(this);
 }
 
+<<<<<<< HEAD
+=======
 CustomTour::CustomTour(QWidget *parent, vector<Winery> WineryVector) :
     QWidget(parent),
     ui(new Ui::CustomTour)
 {
     ui->setupUi(this);
     WineryList = WineryVector;
-
     SetListItems();
 }
 
+>>>>>>> a5d31d628648c32e2ec5fbecc714c02f71520129
 CustomTour::~CustomTour()
 {
     delete ui;
 }
+<<<<<<< HEAD
+=======
 
 void CustomTour::SetListItems()
 {
@@ -93,3 +97,4 @@ void CustomTour::on_remove_clicked()
         SetUserListItems();
     }
 }
+>>>>>>> a5d31d628648c32e2ec5fbecc714c02f71520129
