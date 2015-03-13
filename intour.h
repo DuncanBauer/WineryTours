@@ -22,11 +22,13 @@ private slots:
     void on_nextButton_clicked();
 
 private:
+    void SetWines();
+
     Ui::inTour *ui;
     vector<Winery> WineryList;
     Winery* currentWinery;
-    int numOfWineries;
-    int currentWineryIndex;
+    unsigned int numOfWineries;
+    unsigned int currentWineryIndex;
 };
 
 #endif // INTOUR_H

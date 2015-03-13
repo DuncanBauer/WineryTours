@@ -46,9 +46,12 @@ void CustomTour::SetUserListItems()
 
 void CustomTour::on_pushButton_clicked()
 {
-    tourWindow = new inTour(NULL, UserWineryList);
-    tourWindow->show();
-    this->close();
+    if(!UserWineryList.empty())
+    {
+        tourWindow = new inTour(NULL, UserWineryList);
+        tourWindow->show();
+        this->close();
+    }
 }
 
 void CustomTour::on_add_clicked()

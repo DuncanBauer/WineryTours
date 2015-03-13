@@ -1,5 +1,6 @@
 #include "intour.h"
 #include "ui_intour.h"
+#include "mainwindow.h"
 
 inTour::inTour(QWidget *parent) :QWidget(parent),
 ui(new Ui::inTour)
@@ -14,15 +15,11 @@ inTour::inTour(QWidget *parent, vector<Winery> WineryVector) :
 {
     ui->setupUi(this);
     WineryList = WineryVector;
-    numOfWineries = WineryVector.size();
+    numOfWineries = WineryList.size();
     currentWineryIndex = 0;
     currentWinery = &WineryVector.operator [](currentWineryIndex);
-
-    for(int index = 0; index < currentWinery->getNumOfWines(); index++)
-    {
-        ui->wineList->addItem(currentWinery->getWine(index).GetName());
-    }
-
+    SetWines();
+    ui->winaryName->setText(currentWinery->getName());
 }
 
 inTour::~inTour()
@@ -32,5 +29,26 @@ inTour::~inTour()
 
 void inTour::on_nextButton_clicked()
 {
-    currentWineryIndex++;
+    if(currentWineryIndex < WineryList.size() - 1)
+    {
+        currentWineryIndex++;
+        currentWinery = &WineryList.operator [](currentWineryIndex);
+        ui->winaryName->setText(currentWinery->getName());
+        SetWines();
+    }
+    else
+    {
+        MainWindow* w = new MainWindow();
+        w->show();
+        this->close();
+    }
+}
+
+void inTour::SetWines()
+{
+    ui->wineList->clear();
+    for(int index = 0; index < currentWinery->getNumOfWines(); index++)
+    {
+        ui->wineList->addItem(currentWinery->getWine(index).GetName());
+    }
 }

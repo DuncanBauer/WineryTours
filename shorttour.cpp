@@ -30,30 +30,26 @@ shortTour::~shortTour()
 
 void shortTour::on_pushButton_clicked()
 {
-    if(ui->listWidget->currentItem() != NULL)
+    unsigned int numOfWineries = ui->spinBox->text().toInt();
+    if(ui->listWidget->currentItem() != NULL && (numOfWineries <= UserWineryList.size() && numOfWineries != 0))
     {
         int wineryNum;
         int itemIndex = ui->listWidget->currentRow();
-        unsigned int numOfWineries = ui->spinBox->text().toInt();
 
-        if(numOfWineries <= UserWineryList.size() && numOfWineries != 0)
+        Winery tempWinery = UserWineryList.operator [](itemIndex);
+        vector<Winery> temp;
+        temp.push_back(tempWinery);
+
+        for(unsigned int index = 0; index < numOfWineries - 1; index++)
         {
-            Winery tempWinery = UserWineryList.operator [](itemIndex);
-
-            vector<Winery> temp;
-            temp.push_back(tempWinery);
-
-            for(unsigned int index = 0; index < numOfWineries - 1; index++)
-            {
-                wineryNum = tempWinery.getClosestNeighbor();
-                temp.push_back(UserWineryList.operator [](wineryNum));
-                tempWinery = UserWineryList.operator [](wineryNum);
-                tempWinery.setVisitable(false);
-            }
-
-            tourWindow = new inTour(NULL, temp);
-            tourWindow->show();
-            this->close();
+            wineryNum = tempWinery.getClosestNeighbor();
+            temp.push_back(UserWineryList.operator [](wineryNum));
+            tempWinery = UserWineryList.operator [](wineryNum);
+            tempWinery.setVisitable(false);
         }
+
+        tourWindow = new inTour(NULL, temp);
+        tourWindow->show();
+        this->close();
     }
 }

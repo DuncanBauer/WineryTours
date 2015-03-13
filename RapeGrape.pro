@@ -19,7 +19,8 @@ SOURCES += adminportal.cpp \
     WineImplementation.cpp \
     WineryImplementation.cpp \
     shorttour.cpp \
-    customtour.cpp
+    customtour.cpp \
+    newwine.cpp
 
 HEADERS  += mainwindow.h \
     adminportal.h \
@@ -28,12 +29,14 @@ HEADERS  += mainwindow.h \
     List.h \
     intour.h \
     shorttour.h \
-    customtour.h
+    customtour.h \
+    newwine.h
 
 FORMS    += adminportal.ui \
     mainwindow.ui \
     intour.ui \
     shorttour.ui \
-    customtour.ui
+    customtour.ui \
+    newwine.ui
 
 RESOURCES += \

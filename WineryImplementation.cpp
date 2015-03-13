@@ -98,18 +98,18 @@ int Winery::getNumOfWines()
 
 int Winery::getClosestNeighbor()
 {
-    int   closest     = this->wineryNum;
-    float closestDist = 0.0;
+    unsigned int index = 0;
+    float smallest     =  neighbors.operator [](index);
 
-    for(unsigned int index = 0; index < neighbors.size(); index++)
+    for(index = 1; index < neighbors.size(); index++)
     {
-        if(neighbors[index] < closestDist && this->visitable)
+        if(smallest > neighbors.operator [](index) && neighbors.operator [](index) != 0.0)
         {
-            closestDist = neighbors[index];
-            closest = index;
+            smallest  = neighbors.operator [](index);
+            wineryNum = index + 1;
         }
     }
-    return closest;
+    return smallest;
 }
 
 float Winery::getDistanceToMom()

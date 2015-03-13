@@ -19,6 +19,8 @@
 #include "customtour.h"
 #include "intour.h"
 
+vector<Winery> ReadFile(QString fileName);
+
 namespace Ui {
 class MainWindow;
 }
