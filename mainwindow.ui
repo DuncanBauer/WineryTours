@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-image: url(:/Resources/WineRotator-2000x925.jpg);</string>
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QPushButton" name="Admin">
@@ -27,8 +27,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: white;
-font: 13pt &quot;Papyrus&quot;;</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Administrator</string>
@@ -47,7 +46,7 @@ font: 13pt &quot;Papyrus&quot;;</string>
      <string notr="true">font: italic 36pt &quot;Zapfino&quot;;</string>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Rape Grape 2k15&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#000000;&quot;&gt;Rape Grape 2k15&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLabel" name="Demise">
@@ -60,14 +59,10 @@ font: 13pt &quot;Papyrus&quot;;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: white;
-font: 16pt &quot;Papyrus&quot;;
-
-
-</string>
+     <string notr="true"/>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt; color:#ffffff;&quot;&gt;          Please select your demise...&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt; color:#000000;&quot;&gt;Please select your demise...&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="Custom">
@@ -89,10 +84,7 @@ font: 16pt &quot;Papyrus&quot;;
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: white;
-background-image: url(:/Resources/WineRotator-2000x925.jpg);
-font: 13pt &quot;Papyrus&quot;;
-</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Custom Tour</string>
@@ -108,9 +100,7 @@ font: 13pt &quot;Papyrus&quot;;
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: white;
-font: 13pt &quot;Papyrus&quot;;
-</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Full Tour</string>
@@ -126,9 +116,7 @@ font: 13pt &quot;Papyrus&quot;;
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: white;
-font: 13pt &quot;Papyrus&quot;;
-</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Short Tour</string>
@@ -145,15 +133,6 @@ font: 13pt &quot;Papyrus&quot;;
     </rect>
    </property>
   </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-  </widget>
-  <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

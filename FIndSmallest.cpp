@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-int FindClosest(vector<float> myV,int& wineryNum)
+int FindClosest(vector<float> myV, int& wineryNum)
 {
     float smallest =0;
     smallest = myV[0];

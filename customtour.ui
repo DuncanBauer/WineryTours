@@ -14,7 +14,7 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-image: url(:/Resources/kustom.jpeg);</string>
+   <string notr="true"/>
   </property>
   <widget class="QPushButton" name="add">
    <property name="geometry">
@@ -26,9 +26,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: white;
-background-image: url(:/Downloads/kustom.jpeg);
-font: 13pt &quot;American Typewriter&quot;;</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>Add</string>
@@ -44,9 +42,7 @@ font: 13pt &quot;American Typewriter&quot;;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: white;
-background-image: url(:/Downloads/kustom.jpeg);
-font: 13pt &quot;American Typewriter&quot;;</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>Remove</string>
@@ -65,7 +61,7 @@ font: 13pt &quot;American Typewriter&quot;;</string>
     <string notr="true">font: italic 26pt &quot;Zapfino&quot;;</string>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Custom Tour...&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;Custom Tour...&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton">
