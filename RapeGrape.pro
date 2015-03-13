@@ -16,17 +16,23 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     shorttour.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    customtour.cpp \
+    fulltour.cpp
 
 HEADERS  += mainwindow.h \
     shorttour.h \
     mainwindow.h \
     Wine.h \
-    List.h
+    List.h \
+    customtour.h \
+    fulltour.h
 
 FORMS    += \
     shorttour.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    customtour.ui \
+    fulltour.ui
 
 RESOURCES += \
     Images.qrc

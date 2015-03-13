@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/">
-        <file>../../Downloads/WineRotator-2000x925.jpg</file>
+        <file>../Downloads/WineRotator-2000x925.jpg</file>
+        <file>../Downloads/kustom.jpeg</file>
+        <file>../Downloads/shortTour.jpeg</file>
+        <file>../Downloads/wine.jpeg</file>
     </qresource>
 </RCC>

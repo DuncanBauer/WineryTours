@@ -20,7 +20,7 @@ public:
     WineList();
     ~WineList();
 
-    void Add(node newNode);
+    void Add(Wine newNode);
     void Delete();
     void Empty();
 
@@ -50,7 +50,7 @@ WineList<type>::~WineList()
 template <class type>
 void WineList<type>::Add(Wine newWine)
 {
-    node<type>* newNode = new node<type();
+    node<type>* newNode = new node<type>();
     newNode->wine       = newWine;
 
     if(IsEmpty())
