@@ -25,3 +25,8 @@ responseWindow::~responseWindow()
 {
     delete ui;
 }
+
+void responseWindow::on_pushButton_clicked()
+{
+    this->close();
+}

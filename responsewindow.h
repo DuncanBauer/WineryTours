@@ -17,6 +17,9 @@ public:
     explicit responseWindow(QWidget *parent, QString title, QString message);
     ~responseWindow();
 
+private slots:
+    void on_pushButton_clicked();
+
 private:
     Ui::responseWindow *ui;
 };

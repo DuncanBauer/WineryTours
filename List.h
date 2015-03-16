@@ -117,6 +117,7 @@ void WineList<type>::Delete(int index)
             while(jndex < index && temp != NULL)
             {
                 temp = temp->next;
+                jndex++;
             }
 
             if(temp == head)
