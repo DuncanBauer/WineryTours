@@ -82,7 +82,7 @@ vector<Winery> ReadFile(QString fileName)
             // carries and loops for the amount of wines
             tempInt = wineryInput.readLine().toInt();
             tempWinery->setNumOfWines(tempInt);
-            for(int jndex = 0; jndex < tempInt; jndex++)
+            for(int jndex = 0; jndex < tempWinery->getNumOfWines(); jndex++)
             {
                 // Extracts / assigns / pushes the name, year, and price
                 // of each wine to a wine list
@@ -140,7 +140,7 @@ void WriteFile(QString fileName, vector<Winery>* WineryVector)
 
             for(unsigned int jndex = 0; jndex < WineryVector->size(); jndex++)
             {
-                wineryOutput << currentWinery->getNeighbors().operator [](jndex) << endl;
+                wineryOutput << currentWinery->getNeighbors()->operator [](jndex) << endl;
             }
 
             wineryOutput << currentWinery->getDistanceToMom() << endl

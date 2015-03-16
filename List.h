@@ -30,7 +30,7 @@ public:
 
     bool IsEmpty();
     int  Size();
-    type GetData(int index);
+    type* GetData(int index);
 
 private:
     node<type>* head;
@@ -248,14 +248,14 @@ int WineList<type>::Size()
 }
 
 template <class type>
-type WineList<type>::GetData(int index)
+type* WineList<type>::GetData(int index)
 {
     node<type>* temp = head;
     for(int jndex = 0; jndex < index; index++)
     {
         temp = temp->next;
     }
-    return temp->data;
+    return &temp->data;
 }
 
 #endif // LIST_H

@@ -136,3 +136,36 @@ void newWine::on_delete_2_clicked()
         this->SetTableItems();
     }
 }
+
+void newWine::on_edit_clicked()
+{
+    if(ui->tableWidget->currentItem() != NULL)
+    {
+        int index                = ui->tableWidget->currentRow();
+        Winery* tempWinery       = &WineryList.operator [](wineryIndex);
+        WineList<Wine>* tempList = tempWinery->getWineList();
+        Wine* tempWine           = tempList->GetData(index);
+
+        if(ui->name->text() != "")
+        {
+            tempWine->SetName(ui->name->text());
+        }
+        if(ui->year->text().toInt() > 0 && ui->year->text().toInt() <= 9999)
+        {
+            tempWine->SetYear(ui->year->text().toInt());
+        }
+        if(ui->price->text().toFloat() > 0 && ui->price->text().toFloat() <= 1000000)
+        {
+            tempWine->SetPrice(ui->price->text().toFloat());
+        }
+
+        ui->name->clear();
+        ui->year->clear();
+        ui->price->clear();
+
+        WriteFile("wineries.txt", &WineryList);
+        emit changeSuccess();
+        WineryList = ReadFile("wineries.txt");
+        this->SetTableItems();
+    }
+}

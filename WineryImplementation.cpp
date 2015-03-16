@@ -96,9 +96,9 @@ int Winery::getNumOfWines()
     return NumOfWines;
 }
 
-vector<float> Winery::getNeighbors()
+vector<float>* Winery::getNeighbors()
 {
-    return neighbors;
+    return &neighbors;
 }
 
 int Winery::getClosestNeighbor(vector<Winery> WineryVector)

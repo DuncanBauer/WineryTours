@@ -32,6 +32,8 @@ private slots:
     void on_close_clicked();
     void on_delete_2_clicked();
 
+    void on_edit_clicked();
+
 private:
     Ui::newWine *ui;
     vector<Winery> WineryList;

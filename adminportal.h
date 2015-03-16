@@ -28,11 +28,15 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_addWinery_clicked();
+
 private:
     void SetListItems();
+    void SetPendingListItems();
 
     Ui::AdminPortal *ui;
     vector<Winery> WineryVector;
+    vector<Winery> pendingWineries;
 };
 
 #endif // ADMINPORTAL_H

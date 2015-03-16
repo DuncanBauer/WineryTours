@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>420</width>
     <height>300</height>
    </rect>
   </property>
@@ -16,7 +16,7 @@
   <widget class="QPushButton" name="addWinery">
    <property name="geometry">
     <rect>
-     <x>254</x>
+     <x>284</x>
      <y>230</y>
      <width>71</width>
      <height>23</height>
@@ -52,7 +52,7 @@
   <widget class="QListWidget" name="pendingWineries">
    <property name="geometry">
     <rect>
-     <x>220</x>
+     <x>250</x>
      <y>30</y>
      <width>141</width>
      <height>192</height>
@@ -75,7 +75,7 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>220</x>
+     <x>250</x>
      <y>10</y>
      <width>121</width>
      <height>16</height>
@@ -88,7 +88,7 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>170</x>
+     <x>180</x>
      <y>260</y>
      <width>61</width>
      <height>23</height>

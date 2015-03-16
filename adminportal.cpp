@@ -15,7 +15,9 @@ AdminPortal::AdminPortal(QWidget *parent, vector<Winery> newVector) :
 {
     ui->setupUi(this);
     WineryVector = newVector;
+    pendingWineries = ReadFile("pending.txt");
     SetListItems();
+    SetPendingListItems();
 }
 
 AdminPortal::~AdminPortal()
@@ -31,6 +33,17 @@ void AdminPortal::SetListItems()
     {
         temp = WineryVector.operator [](i);
         ui->wineries->addItem(temp.getName());
+    }
+}
+
+void AdminPortal::SetPendingListItems()
+{
+    ui->pendingWineries->clear();
+    Winery temp;
+    for(unsigned int i = 0; i < pendingWineries.size(); i++)
+    {
+        temp = pendingWineries.operator [](i);
+        ui->pendingWineries->addItem(temp.getName());
     }
 }
 
@@ -56,4 +69,37 @@ void AdminPortal::on_pushButton_clicked()
     MainWindow* w = new MainWindow();
     w->show();
     this->close();
+}
+
+void AdminPortal::on_addWinery_clicked()
+{
+    if(ui->pendingWineries->currentItem() != NULL)
+    {
+        unsigned int index = ui->pendingWineries->currentRow();
+        Winery temp = pendingWineries.operator [](index);
+
+        while(index < pendingWineries.size() - 1)
+        {
+            pendingWineries.operator [](index) = pendingWineries.operator [](index + 1);
+            index++;
+            qDebug() << 1;
+        }
+        pendingWineries.pop_back();
+
+        WineryVector.push_back(temp);
+
+        vector<float>* tempVector;
+        for(unsigned int jndex = 0; jndex < WineryVector.size() - 1; jndex++)
+        {
+             tempVector = WineryVector.operator [](jndex).getNeighbors();
+             tempVector->push_back(temp.getNeighbors()->operator [](jndex));
+             qDebug() << 2;
+        }
+        WriteFile("wineries.txt", &WineryVector);
+        WriteFile("pending.txt", &pendingWineries);
+        ReadFile("wineries.txt");
+        ReadFile("pending.txt");
+        SetListItems();
+        SetPendingListItems();
+    }
 }

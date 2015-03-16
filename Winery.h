@@ -44,7 +44,7 @@ public:
     WineList<Wine>* getWineList();
     Wine*          getWine(int index);
     int            getNumOfWines();
-    vector<float>  getNeighbors();
+    vector<float>*  getNeighbors();
     int            getClosestNeighbor(vector<Winery> WineryVector);
     float          getDistanceToMom();
     bool           getVisitable();
