@@ -115,25 +115,23 @@ void newWine::on_delete_2_clicked()
         Winery* tempWinery       = &WineryList.operator [](wineryIndex);
         WineList<Wine>* tempList = tempWinery->getWineList();
 
-        int index = ui->tableWidget->currentRow();
-        tempList->Delete(index);
-        tempWinery->setNumOfWines(tempWinery->getNumOfWines() - 1);
-
-        for(int jndex = 0; jndex < tempList->Size(); jndex++)
+        if(tempList->Size() > 1)
         {
-            tempList->operator [](jndex)->Print();
-        }
+            int index = ui->tableWidget->currentRow();
+            tempList->Delete(index);
+            tempWinery->setNumOfWines(tempWinery->getNumOfWines() - 1);
 
-        for(int jndex = 0; jndex < WineryList.operator [](wineryIndex).getNumOfWines(); jndex++)
+            WriteFile("wineries.txt", &WineryList);
+
+            emit changeSuccess();
+            WineryList = ReadFile("wineries.txt");
+            this->SetTableItems();
+        }
+        else
         {
-            WineryList.operator [](wineryIndex).getWineList()->operator [](jndex)->Print();
+            responseWindow* w = new responseWindow(NULL, "Error", "A winery has to have wine");
+            w->show();
         }
-
-        WriteFile("wineries.txt", &WineryList);
-
-        emit changeSuccess();
-        WineryList = ReadFile("wineries.txt");
-        this->SetTableItems();
     }
 }
 

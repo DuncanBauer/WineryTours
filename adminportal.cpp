@@ -82,7 +82,6 @@ void AdminPortal::on_addWinery_clicked()
         {
             pendingWineries.operator [](index) = pendingWineries.operator [](index + 1);
             index++;
-            qDebug() << 1;
         }
         pendingWineries.pop_back();
 
@@ -93,7 +92,6 @@ void AdminPortal::on_addWinery_clicked()
         {
              tempVector = WineryVector.operator [](jndex).getNeighbors();
              tempVector->push_back(temp.getNeighbors()->operator [](jndex));
-             qDebug() << 2;
         }
         WriteFile("wineries.txt", &WineryVector);
         WriteFile("pending.txt", &pendingWineries);

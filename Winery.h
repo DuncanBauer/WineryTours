@@ -6,6 +6,7 @@
 #include <vector>
 #include "List.h"
 #include "Wine.h"
+#include "responsewindow.h"
 
 using namespace std;
 
