@@ -1,8 +1,8 @@
 #include <QFile>
 #include <QMessageBox>
 #include <QTextStream>
-#include <qdebug.h>
 #include <qdir.h>
+#include <windows.h>
 #include "Winery.h"
 
 
@@ -46,10 +46,10 @@ vector<Winery> ReadFile(QString fileName)
         QString tempString;
         int     tempInt;
         float   tempFloat;
-        vector<float>* tempVector = new vector<float>();
-        WineList<Wine>* tempList  = new WineList<Wine>();
-        Winery* tempWinery        = new Winery();
-        Wine*   tempWine          = new Wine();
+        Wine*   tempWine           = new Wine();
+        Winery* tempWinery         = new Winery();
+        WineList<Wine>* tempList   = new WineList<Wine>();
+        vector<float>*  tempVector = new vector<float>();
 
         // Loops until the end of the file is reached
         while(!wineryInput.atEnd())
@@ -100,6 +100,7 @@ vector<Winery> ReadFile(QString fileName)
 
             // Reads the blank line in the input file between wineries
             tempString = wineryInput.readLine();
+
             // Allocates new memory
             tempWinery = new Winery();
             tempList   = new WineList<Wine>();
@@ -118,7 +119,7 @@ vector<Winery> ReadFile(QString fileName)
     return tempWineryVector;
 }
 
-void WriteFile(QString fileName, vector<Winery> WineryVector)
+void WriteFile(QString fileName, vector<Winery>* WineryVector)
 {
     QFile wineryFile(fileName);
     QTextStream wineryOutput(&wineryFile);
@@ -129,34 +130,35 @@ void WriteFile(QString fileName, vector<Winery> WineryVector)
     }
     else
     {
-        qDebug() << QDir::currentPath();
-        qDebug() << 2;
-        Winery currentWinery;
-        for(unsigned int index = 0; index < WineryVector.size(); index++)
+        Winery* currentWinery;
+        for(unsigned int index = 0; index < WineryVector->size(); index++)
         {
-            currentWinery = WineryVector.operator [](index);
-            wineryOutput << currentWinery.getName()      << endl
-                         << currentWinery.getWineryNum() << endl
-                         << WineryVector.size()          << endl;
+            currentWinery = &WineryVector->operator [](index);
+            wineryOutput << currentWinery->getName()      << endl
+                         << currentWinery->getWineryNum() << endl
+                         << WineryVector->size()          << endl;
 
-            for(unsigned int jndex = 0; jndex < WineryVector.size(); jndex++)
+            for(unsigned int jndex = 0; jndex < WineryVector->size(); jndex++)
             {
-                wineryOutput << currentWinery.getNeighbors().operator [](jndex) << endl;
+                wineryOutput << currentWinery->getNeighbors().operator [](jndex) << endl;
             }
 
-            wineryOutput << currentWinery.getDistanceToMom() << endl
-                         << currentWinery.getNumOfWines()    << endl;
+            wineryOutput << currentWinery->getDistanceToMom() << endl
+                         << currentWinery->getNumOfWines()    << endl;
 
-            WineList<Wine> temp = currentWinery.getWineList();
-            Wine tempWine;
-            int jndex = 0;
-            while(jndex < currentWinery.getNumOfWines())
+            WineList<Wine>* tempList = currentWinery->getWineList();
+            if(tempList->Size() != 0)
             {
-                tempWine = temp.operator [](jndex);
-                wineryOutput << tempWine.GetName()  << endl
-                             << tempWine.GetYear()  << endl
-                             << tempWine.GetPrice() << endl;
-                jndex++;
+                Wine* tempWine;
+                int jndex = 0;
+                while(jndex < currentWinery->getNumOfWines())
+                {
+                    tempWine = tempList->operator [](jndex);
+                    wineryOutput << tempWine->GetName()  << endl
+                                 << tempWine->GetYear()  << endl
+                                 << tempWine->GetPrice() << endl;
+                    jndex++;
+                }
             }
             wineryOutput << endl;
         }

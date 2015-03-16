@@ -22,10 +22,11 @@ public:
     ~WineList();
 
     void Add(type newWine);
-    void Delete();
+    void Delete(int index);
+    void Pop_back();
     void Empty();
     WineList<type>& operator =(const WineList<type>& list);
-    type operator [](int index);
+    type* operator [](int index);
 
     bool IsEmpty();
     int  Size();
@@ -65,7 +66,7 @@ WineList<type>::WineList(const WineList<type> &list)
         temp  = temp->next;
     }
     tail = temp->prev;
-    temp->prev->next = NULL;
+    tail->next = NULL;
     delete temp;
 }
 
@@ -99,19 +100,78 @@ void WineList<type>::Add(type newData)
 }
 
 template <class type>
-void WineList<type>::Delete()
+void WineList<type>::Delete(int index)
 {
-    if(!IsEmpty())
+    if(!IsEmpty()&& index < size)
     {
         node<type>* temp = head;
-        head             = head->next;
-        if(head != NULL)
+
+        if(size == 1)
         {
-            head->prev = NULL;
+            head = NULL;
+            tail = NULL;
         }
         else
         {
-            tail = NULL;
+            int jndex = 0;
+            while(jndex < index && temp != NULL)
+            {
+                temp = temp->next;
+            }
+
+            if(temp == head)
+            {
+                head = head->next;
+                if(head != NULL)
+                {
+                    head->prev = NULL;
+                }
+                else
+                {
+                    tail = NULL;
+                }
+            }
+            else if(temp == tail)
+            {
+                tail = tail->prev;
+                if(tail != NULL)
+                {
+                    tail->next = NULL;
+                }
+                else
+                {
+                    head = NULL;
+                }
+            }
+            else if(temp == NULL)
+            {
+                temp = new node<type>();
+            }
+            else
+            {
+                temp->next->prev = temp->prev;
+                temp->prev->next = temp->next;
+            }
+        }
+        delete temp;
+        size--;
+    }
+}
+
+template <class type>
+void WineList<type>::Pop_back()
+{
+    if(!IsEmpty())
+    {
+        node<type>* temp = tail;
+        tail             = tail->prev;
+        if(tail != NULL)
+        {
+            tail->next = NULL;
+        }
+        else
+        {
+            head = NULL;
         }
         delete temp;
         size--;
@@ -133,19 +193,17 @@ void WineList<type>::Empty()
 }
 
 template <class type>
-type WineList<type>::operator [](int index)
+type* WineList<type>::operator [](int index)
 {
-    type tempWine;
+    type* tempWine = NULL;
     if(index < size)
     {
         node<type>* temp = head;
-        int jndex = 0;
-        while(jndex < index)
+        for(int jndex = 0; jndex < index; jndex++)
         {
             temp = temp->next;
-            jndex++;
         }
-        tempWine = temp->data;
+        tempWine = &temp->data;
     }
     return tempWine;
 }
@@ -172,7 +230,7 @@ WineList<type>& WineList<type>::operator =(const WineList<type>& list)
         temp  = temp->next;
     }
     tail = temp->prev;
-    temp->prev->next = NULL;
+    tail->next = NULL;
     delete temp;
     return *this;
 }

@@ -7,7 +7,7 @@
 #include "newwine.h"
 
 vector<Winery> ReadFile(QString fileName);
-void WriteFile(QString fileName, vector<Winery> WineryVector);
+void WriteFile(QString fileName, vector<Winery>* WineryVector);
 
 namespace Ui {
 class AdminPortal;
@@ -23,8 +23,10 @@ public:
     ~AdminPortal();
 
 private slots:
-    void on_addWine_clicked();
+    void on_editList_clicked();
     void RereadList();
+
+    void on_pushButton_clicked();
 
 private:
     void SetListItems();

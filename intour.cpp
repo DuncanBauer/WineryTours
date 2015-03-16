@@ -49,6 +49,6 @@ void inTour::SetWines()
     ui->wineList->clear();
     for(int index = 0; index < currentWinery->getNumOfWines(); index++)
     {
-        ui->wineList->addItem(currentWinery->getWine(index).GetName());
+        ui->wineList->addItem(currentWinery->getWine(index)->GetName());
     }
 }

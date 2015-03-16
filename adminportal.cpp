@@ -1,5 +1,6 @@
 #include "adminportal.h"
 #include "ui_adminportal.h"
+#include "mainwindow.h"
 
 AdminPortal::AdminPortal(QWidget *parent) :
     QWidget(parent),
@@ -33,12 +34,11 @@ void AdminPortal::SetListItems()
     }
 }
 
-void AdminPortal::on_addWine_clicked()
+void AdminPortal::on_editList_clicked()
 {
     if(ui->wineries->currentItem() != NULL)
     {
         unsigned int index = ui->wineries->currentRow();
-        qDebug() << index;
         newWine* w = new newWine(NULL, WineryVector, index);
         connect(w, SIGNAL(changeSuccess()), this, SLOT(RereadList()));
         w->show();
@@ -48,4 +48,12 @@ void AdminPortal::on_addWine_clicked()
 void AdminPortal::RereadList()
 {
     WineryVector = ReadFile("wineries.txt");
+    SetListItems();
+}
+
+void AdminPortal::on_pushButton_clicked()
+{
+    MainWindow* w = new MainWindow();
+    w->show();
+    this->close();
 }

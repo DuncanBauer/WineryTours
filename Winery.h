@@ -1,7 +1,7 @@
 #ifndef WINERY_H
 #define WINERY_H
 
-#include <QDebug>
+#include <qdebug.h>
 #include <QString>
 #include <vector>
 #include "List.h"
@@ -41,8 +41,8 @@ public:
     // Getters
     QString        getName();
     int            getWineryNum();
-    WineList<Wine> getWineList();
-    Wine           getWine(int index);
+    WineList<Wine>* getWineList();
+    Wine*          getWine(int index);
     int            getNumOfWines();
     vector<float>  getNeighbors();
     int            getClosestNeighbor(vector<Winery> WineryVector);

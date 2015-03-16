@@ -6,7 +6,8 @@
 #include "Winery.h"
 #include "Wine.h"
 
-void WriteFile(QString fileName, vector<Winery> WineryVector);
+void WriteFile(QString fileName, vector<Winery> *WineryVector);
+vector<Winery> ReadFile(QString fileName);
 
 namespace Ui {
 class newWine;
@@ -26,6 +27,10 @@ signals:
 
 private slots:
     void on_add_clicked();
+    void SetTableItems();
+    void ClearTable();
+    void on_close_clicked();
+    void on_delete_2_clicked();
 
 private:
     Ui::newWine *ui;
