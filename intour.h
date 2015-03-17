@@ -21,14 +21,24 @@ public:
 private slots:
     void on_nextButton_clicked();
 
+    void on_purchWineButton_clicked();
+
 private:
-    void SetWines();
+    void ClearAvailWines();
+    void SetAvailWines();
+    void SetWinesPurched();
+    void ClearWinesPurched();
 
     Ui::inTour *ui;
     vector<Winery> WineryList;
     Winery* currentWinery;
     unsigned int numOfWineries;
     unsigned int currentWineryIndex;
+
+    WineList<Wine> winesPurchased;
+    float moneySpentHere;
+    float totalSpent;
+    float distTraveled;
 };
 
 #endif // INTOUR_H

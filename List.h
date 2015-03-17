@@ -9,6 +9,7 @@ template <class type>
 struct node
 {
     type  data;
+    int   quantity;
     node* next;
     node* prev;
 };
@@ -18,6 +19,7 @@ class WineList
 {
 public:
     WineList();
+    WineList(bool newIsCart);
     WineList(const WineList& list);
     ~WineList();
 
@@ -28,6 +30,7 @@ public:
     WineList<type>& operator =(const WineList<type>& list);
     type* operator [](int index);
 
+    node<type>* GetHead();
     bool IsEmpty();
     int  Size();
     type* GetData(int index);
@@ -36,6 +39,7 @@ private:
     node<type>* head;
     node<type>* tail;
     int         size;
+    bool        isCart;
 };
 
 template <class type>
@@ -44,6 +48,16 @@ WineList<type>::WineList()
     head = NULL;
     tail = NULL;
     size = 0;
+    isCart = 0;
+}
+
+template <class type>
+WineList<type>::WineList(bool newIsCart)
+{
+    head = NULL;
+    tail = NULL;
+    size = 0;
+    isCart = newIsCart;
 }
 
 template <class type>
@@ -79,22 +93,59 @@ WineList<type>::~WineList()
 template <class type>
 void WineList<type>::Add(type newData)
 {
-    node<type>* newNode = new node<type>();
-    newNode->data       = newData;
-
-    if(IsEmpty())
+    if(!isCart)
     {
-        head = newNode;
-        tail = newNode;
-        newNode->next = NULL;
-        newNode->prev = NULL;
+        node<type>* newNode = new node<type>();
+        newNode->data       = newData;
+
+        if(IsEmpty())
+        {
+            head = newNode;
+            tail = newNode;
+            newNode->next = NULL;
+            newNode->prev = NULL;
+        }
+        else
+        {
+            tail->next    = newNode;
+            newNode->prev = tail;
+            newNode->next = NULL;
+            tail          = tail->next;
+        }
     }
     else
     {
-        tail->next    = newNode;
-        newNode->prev = tail;
-        newNode->next = NULL;
-        tail          = tail->next;
+        node<type>* newNode = new node<type>();
+        newNode->data       = newData;
+
+        if(IsEmpty())
+        {
+            head = newNode;
+            tail = newNode;
+            newNode->next = NULL;
+            newNode->prev = NULL;
+        }
+        else
+        {
+            node<type>* temp = head;
+            bool found = false;
+            while(temp != NULL && !found)
+            {
+                if(temp->data == newNode->data)
+                {
+                    temp->quantity++;
+                    found = true;
+                }
+                temp = temp->next;
+            }
+            if(!found)
+            {
+                tail->next    = newNode;
+                newNode->prev = tail;
+                newNode->next = NULL;
+                tail          = tail->next;
+            }
+        }
     }
     size++;
 }
@@ -234,6 +285,12 @@ WineList<type>& WineList<type>::operator =(const WineList<type>& list)
     tail->next = NULL;
     delete temp;
     return *this;
+}
+
+template <class type>
+node<type>* WineList<type>::GetHead()
+{
+    return head;
 }
 
 template <class type>

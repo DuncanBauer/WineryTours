@@ -17,6 +17,7 @@ public:
     int     GetYear();
     float   GetPrice();
     void    Print();
+    bool    operator ==(const Wine& obj) const;
 
 private:
     QString name;

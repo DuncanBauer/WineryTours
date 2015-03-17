@@ -48,3 +48,15 @@ void Wine::Print()
              << year  << endl
              << price << endl;
 }
+
+bool Wine::operator ==(const Wine& obj) const
+{
+    if(name == obj.name && price == obj.price && year == obj.year)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
