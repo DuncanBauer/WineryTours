@@ -15,12 +15,45 @@ shortTour::shortTour(QWidget *parent, vector<Winery> WineryVector) :
 
     UserWineryList = WineryVector;
 
-    Winery temp;
-    for(unsigned int i = 0; i < WineryVector.size(); i++)
+    ui->customTable->setShowGrid(true);
+    ui->customTable->setColumnCount(2);
+    ui->customTable->setRowCount(0);
+    ui->customTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
+   // this->SetListItems();
+
+    int row = 0;
+    unsigned int index = 0;
+    //Winery tempWinery;       // = WineryList.operator [](index);
+    //WineList<Wine>* tempList = tempWinery.getWineList();
+
+    for(index = 0; index < UserWineryList.size(); index++)
     {
-        temp = WineryVector.operator [](i);
-        ui->listWidget->addItem(temp.getName()); //temp.name;
+        if(ui->customTable->rowCount() < row + 1)
+        {
+            ui->customTable->setRowCount(row + 1);
+        }
+
+        Winery item = UserWineryList.operator [](index);
+
+        QStringList itemList;
+        QString itemDistance = QString::number(item.getDistanceToMom());
+        itemList << item.getName() << itemDistance;
+
+        for(int column = 0; column < 2; column++)
+        {
+            QTableWidgetItem *newItem = new QTableWidgetItem(itemList.at(column));
+            ui->customTable->setItem(row, column, newItem);
+        }
+        row++;
     }
+    row = 0;
+
+
+    QStringList headers;
+    headers << "Winery Name" << "Distance to Mom";
+    ui->customTable->setHorizontalHeaderLabels(headers);
+
+
 }
 
 shortTour::~shortTour()
@@ -31,10 +64,10 @@ shortTour::~shortTour()
 void shortTour::on_pushButton_clicked()
 {
     unsigned int numOfWineries = ui->spinBox->text().toInt();
-    if(ui->listWidget->currentItem() != NULL && (numOfWineries <= UserWineryList.size() && numOfWineries != 0))
+    if(ui->customTable->currentItem() != NULL && (numOfWineries <= UserWineryList.size() && numOfWineries != 0))
     {
         int wineryNum;
-        int itemIndex = ui->listWidget->currentRow();
+        int itemIndex = ui->customTable->currentRow();
 
         Winery tempWinery = UserWineryList.operator [](itemIndex);
         vector<Winery> temp;

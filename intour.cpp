@@ -164,9 +164,28 @@ void inTour::SetWinesPurched()
 
 void inTour::on_purchWineButton_clicked()
 {
+//    if(ui->winesAvail->currentItem() != NULL)
+//    {
+//        int wineIndex = ui->winesAvail->currentRow();
+//        WineList<Wine>* tempList =
+//    }
+
+
     if(ui->winesAvail->currentItem() != NULL)
     {
         int wineIndex = ui->winesAvail->currentRow();
-//        WineList<Wine>* tempList =
+        WineList<Wine>* tempList = currentWinery->getWineList();
+        Wine* tempWine = tempList->operator[](wineIndex);
+
+        for(int index = 0; index < ui->spinBox->text().toInt(); index++)
+        {
+            winesPurchased. Add(*tempWine);
+        }
+
+        SetWinesPurched();
     }
+
+
+
+
 }
