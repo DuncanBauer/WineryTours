@@ -13,6 +13,11 @@ instructions::instructions(QWidget *parent, QString title, QString message) :
     ui(new Ui::instructions)
 {
     ui->setupUi(this);
+    this->setWindowTitle(title);
+
+    ui->label->sette(message);
+    ui->label->setWordWrap(true);
+    ui->label->setAlignment(Qt::AlignCenter);
 }
 
 instructions::~instructions()
