@@ -14,7 +14,22 @@ CustomTour::CustomTour(QWidget *parent, vector<Winery> WineryVector) :
 {
     ui->setupUi(this);
     WineryList = WineryVector;
-    SetListItems();
+
+    ui->wineTable->setShowGrid(true);
+    ui->wineTable->setColumnCount(2);
+    ui->wineTable->setRowCount(0);
+    ui->wineTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    this->SetListItems();
+
+
+    ui->userList->setShowGrid(true);
+    ui->userList->setColumnCount(2);
+    ui->userList->setRowCount(0);
+    ui->userList->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    this->SetUserListItems();
+
+
+   // SetListItems();
 }
 
 CustomTour::~CustomTour()
@@ -24,24 +39,83 @@ CustomTour::~CustomTour()
 
 void CustomTour::SetListItems()
 {
-    ui->listWidget->clear();
-    Winery temp;
-    for(unsigned int i = 0; i < WineryList.size(); i++)
+//    ui->listWidget->clear();
+//    Winery temp;
+//    for(unsigned int i = 0; i < WineryList.size(); i++)
+//    {
+//        temp = WineryList.operator [](i);
+//        ui->listWidget->addItem(temp.getName()); //temp.name;
+//    }
+
+
+    int row = 0;
+    unsigned int index = 0;
+    //Winery tempWinery;       // = WineryList.operator [](index);
+    //WineList<Wine>* tempList = tempWinery.getWineList();
+
+    for(index = 0; index < WineryList.size(); index++)
     {
-        temp = WineryList.operator [](i);
-        ui->listWidget->addItem(temp.getName()); //temp.name;
+        if(ui->wineTable->rowCount() < row + 1)
+        {
+            ui->wineTable->setRowCount(row + 1);
+        }
+
+        Winery item = WineryList.operator [](index);
+
+        QStringList itemList;
+        QString itemDistance = QString::number(item.getDistanceToMom());
+        itemList << item.getName() << itemDistance;
+
+        for(int column = 0; column < 2; column++)
+        {
+            QTableWidgetItem *newItem = new QTableWidgetItem(itemList.at(column));
+            ui->wineTable->setItem(row, column, newItem);
+        }
+        row++;
     }
+    row = 0;
+
+
+    QStringList headers;
+    headers << "Winery Name" << "Distance to Mom";
+    ui->wineTable->setHorizontalHeaderLabels(headers);
+
+
+
 }
 
 void CustomTour::SetUserListItems()
 {
     ui->userList->clear();
-    Winery temp;
+   // Winery temp;
+    int row = 0;
     for(unsigned int i = 0; i < UserWineryList.size(); i++)
     {
-        temp = UserWineryList.operator [](i);
-        ui->userList->addItem(temp.getName()); //temp.name;
+        if(ui->userList->rowCount() < row + 1)
+        {
+            ui->userList->setRowCount(row + 1);
+        }
+       Winery temp = UserWineryList.operator [](i);
+
+        QStringList itemList;
+        QString itemDistance = QString::number(temp.getDistanceToMom());
+        itemList << temp.getName() << itemDistance;
+
+        for(int column = 0; column < 2; column++)
+        {
+            QTableWidgetItem *newItem = new QTableWidgetItem(itemList.at(column));
+            ui->userList->setItem(row, column, newItem);
+        }
+        row++;
+
+       // temp = UserWineryList.operator [](i);
+       // ui->userList->addItem(temp.getName()); //temp.name;
     }
+
+
+    QStringList headers;
+    headers << "Winery Name" << "Distance to Mom";
+    ui->userList->setHorizontalHeaderLabels(headers);
 }
 
 void CustomTour::on_pushButton_clicked()
@@ -56,10 +130,11 @@ void CustomTour::on_pushButton_clicked()
 
 void CustomTour::on_add_clicked()
 {
-    if(ui->listWidget->currentItem() != NULL)
+    if(ui->wineTable->currentItem() != NULL)
     {
-        QListWidgetItem *item = ui->listWidget->currentItem();
-        int itemIndex = ui->listWidget->currentRow();
+        QTableWidgetItem *item = ui->wineTable->currentItem();
+        int itemIndex = ui->wineTable->currentRow();
+        int column = ui->wineTable->currentColumn();
         UserWineryList.push_back(WineryList.operator[] (itemIndex));
 
         for(unsigned int index = itemIndex; index < WineryList.size() - 1; index++)
@@ -67,8 +142,8 @@ void CustomTour::on_add_clicked()
             WineryList.operator[](index) = WineryList.operator[](index + 1);
         }
         WineryList.pop_back();
-        ui->userList->addItem(item);
-        ui->listWidget->removeItemWidget(item);
+        ui->userList->setItem(itemIndex, column, item);
+        ui->wineTable->removeRow(itemIndex);
 
         SetListItems();
         SetUserListItems();
@@ -79,8 +154,9 @@ void CustomTour::on_remove_clicked()
 {
     if(ui->userList->currentItem() != NULL)
     {
-        QListWidgetItem *item = ui->userList->currentItem();
+        QTableWidgetItem *item = ui->userList->currentItem();
         int itemIndex = ui->userList->currentRow();
+          int column = ui->wineTable->currentColumn();
         WineryList.push_back(UserWineryList.operator[] (itemIndex));
 
         for(unsigned int index = itemIndex; index < UserWineryList.size() - 1; index++)
@@ -88,8 +164,8 @@ void CustomTour::on_remove_clicked()
             UserWineryList.operator[](index) = UserWineryList.operator[](index + 1);
         }
         UserWineryList.pop_back();
-        ui->listWidget->addItem(item);
-        ui->userList->removeItemWidget(item);
+        ui->wineTable->setItem(itemIndex, column, item);
+        ui->userList->removeRow(itemIndex);
 
         SetListItems();
         SetUserListItems();
