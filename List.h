@@ -4,6 +4,7 @@
 using namespace std;
 
 #include "Wine.h"
+#include <qdebug.h>
 
 template <class type>
 struct node
@@ -27,6 +28,7 @@ public:
     void Delete(int index);
     void Pop_back();
     void Empty();
+    void SetCart(bool newIsCart);
     WineList<type>& operator =(const WineList<type>& list);
     type* operator [](int index);
 
@@ -93,58 +95,47 @@ WineList<type>::~WineList()
 template <class type>
 void WineList<type>::Add(type newData)
 {
-    if(!isCart)
-    {
-        node<type>* newNode = new node<type>();
-        newNode->data       = newData;
+    node<type>* newNode = new node<type>();
+    newNode->data       = newData;
+    newNode->quantity   = 1;
 
-        if(IsEmpty())
+    if(IsEmpty())
+    {
+        head = newNode;
+        tail = newNode;
+        newNode->next = NULL;
+        newNode->prev = NULL;
+    }
+    else if(!isCart)
+    {
+        tail->next    = newNode;
+        newNode->prev = tail;
+        newNode->next = NULL;
+        tail          = tail->next;
+    }
+    else
+    {
+        node<type>* temp  = head;
+        bool        found = false;
+        while(temp != NULL && !found)
         {
-            head = newNode;
-            tail = newNode;
-            newNode->next = NULL;
-            newNode->prev = NULL;
+            if(temp->data == newNode->data)
+            {
+                temp->quantity++;
+                found = true;
+            }
+            temp = temp->next;
         }
-        else
+        if(!found)
         {
             tail->next    = newNode;
             newNode->prev = tail;
             newNode->next = NULL;
             tail          = tail->next;
         }
-    }
-    else
-    {
-        node<type>* newNode = new node<type>();
-        newNode->data       = newData;
-
-        if(IsEmpty())
-        {
-            head = newNode;
-            tail = newNode;
-            newNode->next = NULL;
-            newNode->prev = NULL;
-        }
         else
         {
-            node<type>* temp = head;
-            bool found = false;
-            while(temp != NULL && !found)
-            {
-                if(temp->data == newNode->data)
-                {
-                    temp->quantity++;
-                    found = true;
-                }
-                temp = temp->next;
-            }
-            if(!found)
-            {
-                tail->next    = newNode;
-                newNode->prev = tail;
-                newNode->next = NULL;
-                tail          = tail->next;
-            }
+            delete newNode;
         }
     }
     size++;
@@ -242,6 +233,12 @@ void WineList<type>::Empty()
     }
     tail = NULL;
     size = 0;
+}
+
+template <class type>
+void WineList<type>::SetCart(bool newIsCart)
+{
+    isCart = newIsCart;
 }
 
 template <class type>

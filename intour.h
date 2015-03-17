@@ -20,7 +20,6 @@ public:
 
 private slots:
     void on_nextButton_clicked();
-
     void on_purchWineButton_clicked();
 
 private:
@@ -35,7 +34,7 @@ private:
     unsigned int numOfWineries;
     unsigned int currentWineryIndex;
 
-    WineList<Wine> winesPurchased;
+    WineList<Wine>* winesPurchased;
     float moneySpentHere;
     float totalSpent;
     float distTraveled;

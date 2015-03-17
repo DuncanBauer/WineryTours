@@ -20,6 +20,9 @@ inTour::inTour(QWidget *parent, vector<Winery> WineryVector) :
     currentWineryIndex = 0;
     currentWinery = &WineryVector.operator [](currentWineryIndex);
 
+    winesPurchased = new WineList<Wine>();
+    winesPurchased->SetCart(true);
+
     ui->winaryName->setText(currentWinery->getName());
     ui->winaryName->setAlignment(Qt::AlignCenter);
 
@@ -121,10 +124,10 @@ void inTour::SetWinesPurched()
 {
     this->ClearWinesPurched();
 
-     if(!winesPurchased.IsEmpty())
+     if(!winesPurchased->IsEmpty())
      {
          int row = 0;
-         WineList<Wine>* tempList = &winesPurchased;
+         WineList<Wine>* tempList = winesPurchased;
 
          for(int index = 0; index < tempList->Size(); index++)
          {
@@ -166,7 +169,15 @@ void inTour::on_purchWineButton_clicked()
 {
     if(ui->winesAvail->currentItem() != NULL)
     {
-        int wineIndex = ui->winesAvail->currentRow();
-//        WineList<Wine>* tempList =
+//        int wineIndex = ui->winesAvail->currentRow();
+//        qDebug() << wineIndex;
+        WineList<Wine>* tempList = currentWinery->getWineList();
+        Wine* tempWine = tempList->operator [](ui->winesAvail->currentRow());
+
+        for(int index = 0; index < ui->spinBox->text().toInt(); index++)
+        {
+            winesPurchased->Add(*tempWine);
+        }
+        SetWinesPurched();
     }
 }
