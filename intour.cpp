@@ -17,12 +17,12 @@ inTour::inTour(QWidget *parent, vector<Winery> WineryVector) :
     WineryList = WineryVector;
     numOfWineries = WineryList.size();
     currentWineryIndex = 0;
-    currentWinery = &WineryVector.operator [](currentWineryIndex);
+    currentWinery = WineryVector.operator [](currentWineryIndex);
 
     winesPurchased = new WineList<Wine>();
     winesPurchased->SetCart(true);
 
-    ui->winaryName->setText(currentWinery->getName());
+    ui->winaryName->setText(currentWinery.getName());
     ui->winaryName->setAlignment(Qt::AlignCenter);
 
     ui->winesAvail->setShowGrid(true);
@@ -48,8 +48,8 @@ void inTour::on_nextButton_clicked()
     if(currentWineryIndex < WineryList.size() - 1)
     {
         currentWineryIndex++;
-        currentWinery = &WineryList.operator [](currentWineryIndex);
-        ui->winaryName->setText(currentWinery->getName());
+        currentWinery = WineryList.operator [](currentWineryIndex);
+        ui->winaryName->setText(currentWinery.getName());
         ui->winaryName->setAlignment(Qt::AlignCenter);
         SetAvailWines();
     }
@@ -135,7 +135,8 @@ void inTour::SetWinesPurched()
                  ui->winesPurched->setRowCount(row + 1);
              }
 
-             Wine* item = tempList->operator [](index);
+             Wine* item2 = tempList->operator [](index);
+             Wine item = *item2;
              node<Wine>* tempNode = tempList->GetHead();
 
              for(int jndex = 0; jndex < index; jndex++)
@@ -144,9 +145,9 @@ void inTour::SetWinesPurched()
              }
 
              QStringList itemList;
-             QString     itemYear     = QString::number(item->GetYear());
+             QString     itemYear     = QString::number(item.GetYear());
              QString     itemQuantity = QString::number(tempNode->quantity);
-             itemList << item->GetName() << itemYear << itemQuantity;
+             itemList << item.GetName() << itemYear << itemQuantity;
 
              for(int column = 0; column < 3; column++)
              {
@@ -168,15 +169,18 @@ void inTour::on_purchWineButton_clicked()
 {
     if(ui->winesAvail->currentItem() != NULL)
     {
-//        int wineIndex = ui->winesAvail->currentRow();
-//        qDebug() << wineIndex;
-        WineList<Wine>* tempList = currentWinery->getWineList();
-        Wine* tempWine = tempList->operator [](ui->winesAvail->currentRow());
+        int wineIndex = ui->winesAvail->currentRow();
+        WineList<Wine>* tempList = currentWinery.getWineList();
+
+        Wine* temp = tempList->operator [](wineIndex);
+        Wine tempWine = *temp;
 
         for(int index = 0; index < ui->spinBox->text().toInt(); index++)
         {
-            winesPurchased->Add(*tempWine);
+            winesPurchased->Add(tempWine);
+            tempWine.Print();
         }
+
 
         SetWinesPurched();
     }

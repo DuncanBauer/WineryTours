@@ -244,7 +244,7 @@ void WineList<type>::SetCart(bool newIsCart)
 template <class type>
 type* WineList<type>::operator [](int index)
 {
-    type* tempWine = NULL;
+    type* tempWine;
     if(index < size)
     {
         node<type>* temp = head;
