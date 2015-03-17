@@ -14,6 +14,8 @@ newWine::newWine(QWidget *parent, vector<Winery> WineryVector, int index) :
     ui(new Ui::newWine)
 {
     ui->setupUi(this);
+    this->setWindowTitle("RapeGrape Winery Tours");
+
     WineryList = WineryVector;
     wineryIndex = index;
 

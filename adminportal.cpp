@@ -7,6 +7,11 @@ AdminPortal::AdminPortal(QWidget *parent) :
     ui(new Ui::AdminPortal)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Admin Portal");
+    WineryVector = ReadFile("wineries.txt");
+    pendingWineries = ReadFile("pending.txt");
+    SetListItems();
+    SetPendingListItems();
 }
 
 AdminPortal::AdminPortal(QWidget *parent, vector<Winery> newVector) :

@@ -105,6 +105,7 @@ void WineList<type>::Add(type newData)
         tail = newNode;
         newNode->next = NULL;
         newNode->prev = NULL;
+        size++;
     }
     else if(!isCart)
     {
@@ -112,6 +113,7 @@ void WineList<type>::Add(type newData)
         newNode->prev = tail;
         newNode->next = NULL;
         tail          = tail->next;
+        size++;
     }
     else
     {
@@ -132,13 +134,13 @@ void WineList<type>::Add(type newData)
             newNode->prev = tail;
             newNode->next = NULL;
             tail          = tail->next;
+            size++;
         }
         else
         {
             delete newNode;
         }
     }
-    size++;
 }
 
 template <class type>

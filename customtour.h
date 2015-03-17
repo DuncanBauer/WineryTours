@@ -27,6 +27,8 @@ private slots:
 
     void on_remove_clicked();
 
+    void on_back_clicked();
+
 private:
     void SetListItems();
     void SetUserListItems();

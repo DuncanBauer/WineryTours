@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     WineryVector = ReadFile("wineries.txt");
+    this->setWindowTitle("RapeGrape Winery Tours");
 }
 
 MainWindow::~MainWindow()
@@ -29,7 +30,7 @@ void MainWindow::on_Short_clicked()
 
 void MainWindow::on_Admin_clicked()
 {
-    adminWindow = new AdminPortal(NULL, WineryVector);
-    adminWindow->show();
+    login = new adminLogin();
+    login->show();
     this->close();
 }

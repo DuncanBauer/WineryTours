@@ -5,7 +5,6 @@
 inTour::inTour(QWidget *parent) :QWidget(parent),
 ui(new Ui::inTour)
 {
-
     ui->setupUi(this);
 }
 
@@ -14,16 +13,30 @@ inTour::inTour(QWidget *parent, vector<Winery> WineryVector) :
     ui(new Ui::inTour)
 {
     ui->setupUi(this);
+    this->setWindowTitle("RapeGrape Winery Tours");
+
     WineryList = WineryVector;
-    numOfWineries = WineryList.size();
     currentWineryIndex = 0;
     currentWinery = WineryVector.operator [](currentWineryIndex);
+
+    distTraveled   = currentWinery.getDistanceToMom();
+    moneySpentHere = 0;
+    totalSpent     = 0;
 
     winesPurchased = new WineList<Wine>();
     winesPurchased->SetCart(true);
 
     ui->winaryName->setText(currentWinery.getName());
     ui->winaryName->setAlignment(Qt::AlignCenter);
+
+    ui->distanceTraveled->setText(QString::number(distTraveled) + " miles");
+    ui->distanceTraveled->setAlignment(Qt::AlignCenter);
+
+    ui->spentHere->setText(QString::number(moneySpentHere) + " dollars");
+    ui->spentHere->setAlignment(Qt::AlignCenter);
+
+    ui->totalSpent->setText(QString::number(totalSpent) + " dollars");
+    ui->totalSpent->setAlignment(Qt::AlignCenter);
 
     ui->winesAvail->setShowGrid(true);
     ui->winesAvail->setColumnCount(3);
@@ -49,8 +62,23 @@ void inTour::on_nextButton_clicked()
     {
         currentWineryIndex++;
         currentWinery = WineryList.operator [](currentWineryIndex);
+
+        // I don't know why this works, but it does, so don't touch it
+        distTraveled += WineryList.operator [](currentWineryIndex - 1).getNeighbors()->operator [](currentWinery.getWineryNum() - 1);
+        moneySpentHere = 0;
+
         ui->winaryName->setText(currentWinery.getName());
         ui->winaryName->setAlignment(Qt::AlignCenter);
+
+        ui->distanceTraveled->setText(QString::number(distTraveled) + " miles");
+        ui->distanceTraveled->setAlignment(Qt::AlignCenter);
+
+        ui->spentHere->setText(QString::number(moneySpentHere) + " dollars");
+        ui->spentHere->setAlignment(Qt::AlignCenter);
+
+        ui->totalSpent->setText(QString::number(totalSpent) + " dollars");
+        ui->totalSpent->setAlignment(Qt::AlignCenter);
+
         SetAvailWines();
     }
     else
@@ -127,7 +155,6 @@ void inTour::SetWinesPurched()
      {
          int row = 0;
          WineList<Wine>* tempList = winesPurchased;
-
          for(int index = 0; index < tempList->Size(); index++)
          {
              if(ui->winesPurched->rowCount() < row + 1)
@@ -178,10 +205,17 @@ void inTour::on_purchWineButton_clicked()
         for(int index = 0; index < ui->spinBox->text().toInt(); index++)
         {
             winesPurchased->Add(tempWine);
-            tempWine.Print();
         }
 
-
         SetWinesPurched();
+
+        moneySpentHere += tempWine.GetPrice() * ui->spinBox->text().toInt();
+        totalSpent     += tempWine.GetPrice() * ui->spinBox->text().toInt();
+
+        ui->spentHere->setText(QString::number(moneySpentHere) + " dollars");
+        ui->spentHere->setAlignment(Qt::AlignCenter);
+
+        ui->totalSpent->setText(QString::number(totalSpent) + " dollars");
+        ui->totalSpent->setAlignment(Qt::AlignCenter);
     }
 }

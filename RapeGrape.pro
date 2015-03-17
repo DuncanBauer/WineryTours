@@ -21,7 +21,8 @@ SOURCES += adminportal.cpp \
     shorttour.cpp \
     customtour.cpp \
     newwine.cpp \
-    responsewindow.cpp
+    responsewindow.cpp \
+    adminlogin.cpp
 
 HEADERS  += mainwindow.h \
     adminportal.h \
@@ -32,7 +33,8 @@ HEADERS  += mainwindow.h \
     shorttour.h \
     customtour.h \
     newwine.h \
-    responsewindow.h
+    responsewindow.h \
+    adminlogin.h
 
 FORMS    += adminportal.ui \
     mainwindow.ui \
@@ -40,6 +42,7 @@ FORMS    += adminportal.ui \
     shorttour.ui \
     customtour.ui \
     newwine.ui \
-    responsewindow.ui
+    responsewindow.ui \
+    adminlogin.ui
 
 RESOURCES += \

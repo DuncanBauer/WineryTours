@@ -31,7 +31,6 @@ private:
     Ui::inTour *ui;
     vector<Winery> WineryList;
     Winery currentWinery;
-    unsigned int numOfWineries;
     unsigned int currentWineryIndex;
 
     WineList<Wine>* winesPurchased;

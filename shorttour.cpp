@@ -1,4 +1,5 @@
 #include "shorttour.h"
+#include "mainwindow.h"
 
 shortTour::shortTour(QWidget *parent) :
     QWidget(parent),
@@ -12,6 +13,7 @@ shortTour::shortTour(QWidget *parent, vector<Winery> WineryVector) :
     ui(new Ui::shortTour)
 {
     ui->setupUi(this);
+    this->setWindowTitle("RapeGrape Winery Tours");
 
     UserWineryList = WineryVector;
 
@@ -85,4 +87,11 @@ void shortTour::on_pushButton_clicked()
         tourWindow->show();
         this->close();
     }
+}
+
+void shortTour::on_back_clicked()
+{
+    MainWindow* w = new MainWindow();
+    w->show();
+    this->close();
 }

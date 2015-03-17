@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>531</width>
+    <width>292</width>
     <height>381</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>292</width>
+    <height>381</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>292</width>
+    <height>381</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Form</string>
@@ -16,8 +28,8 @@
   <widget class="QSpinBox" name="spinBox">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>150</y>
+     <x>200</x>
+     <y>310</y>
      <width>42</width>
      <height>22</height>
     </rect>
@@ -26,9 +38,9 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>224</x>
-     <y>330</y>
-     <width>81</width>
+     <x>60</x>
+     <y>340</y>
+     <width>71</width>
      <height>23</height>
     </rect>
    </property>
@@ -41,9 +53,35 @@
     <rect>
      <x>20</x>
      <y>20</y>
-     <width>241</width>
+     <width>251</width>
      <height>281</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>310</y>
+     <width>141</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Number of wineries to visit</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="back">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>340</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Back</string>
    </property>
   </widget>
  </widget>

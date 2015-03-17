@@ -1,11 +1,13 @@
 #include "customtour.h"
 #include "ui_customtour.h"
+#include "mainwindow.h"
 
 CustomTour::CustomTour(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::CustomTour)
 {
     ui->setupUi(this);
+    this->setWindowTitle("RapeGrape Winery Tours");
 }
 
 CustomTour::CustomTour(QWidget *parent, vector<Winery> WineryVector) :
@@ -151,4 +153,11 @@ void CustomTour::on_remove_clicked()
         SetListItems();
         SetUserListItems();
     }
+}
+
+void CustomTour::on_back_clicked()
+{
+    MainWindow* w = new MainWindow();
+    w->show();
+    this->close();
 }

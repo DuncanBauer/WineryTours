@@ -13,6 +13,7 @@
 #include "fulltour.h"
 #include "customtour.h"
 #include "adminportal.h"
+#include "adminlogin.h"
 #include "List.h"
 #include "Wine.h"
 #include "Winery.h"
@@ -45,7 +46,7 @@ private:
     vector<Winery> WineryVector;
     shortTour*     shortWindow;
     CustomTour*    customWindow;
-    AdminPortal*   adminWindow;
+    adminLogin*    login;
 };
 
 #endif // MAINWINDOW_H
