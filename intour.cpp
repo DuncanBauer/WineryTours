@@ -1,7 +1,6 @@
 #include "intour.h"
 #include "ui_intour.h"
 #include "mainwindow.h"
-#include "VectorWrapper.h"
 
 inTour::inTour(QWidget *parent) :QWidget(parent),
 ui(new Ui::inTour)
@@ -167,16 +166,8 @@ void inTour::SetWinesPurched()
 
 void inTour::on_purchWineButton_clicked()
 {
-//    if(ui->winesAvail->currentItem() != NULL)
-//    {
-//        int wineIndex = ui->winesAvail->currentRow();
-//        WineList<Wine>* tempList =
-//    }
-
-
     if(ui->winesAvail->currentItem() != NULL)
     {
-<<<<<<< HEAD
 //        int wineIndex = ui->winesAvail->currentRow();
 //        qDebug() << wineIndex;
         WineList<Wine>* tempList = currentWinery->getWineList();
@@ -186,21 +177,7 @@ void inTour::on_purchWineButton_clicked()
         {
             winesPurchased->Add(*tempWine);
         }
-=======
-        int wineIndex = ui->winesAvail->currentRow();
-        WineList<Wine>* tempList = currentWinery->getWineList();
-        Wine* tempWine = tempList->operator[](wineIndex);
 
-        for(int index = 0; index < ui->spinBox->text().toInt(); index++)
-        {
-            winesPurchased. Add(*tempWine);
-        }
-
->>>>>>> 7f394374590717968a08dd6cc5732ce59c366392
         SetWinesPurched();
     }
-
-
-
-
 }
