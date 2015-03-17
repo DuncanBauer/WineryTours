@@ -14,6 +14,7 @@
 #include "customtour.h"
 #include "adminportal.h"
 #include "adminlogin.h"
+#include "instructions.h"
 #include "List.h"
 #include "Wine.h"
 #include "Winery.h"

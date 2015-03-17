@@ -75,6 +75,7 @@ WineList<type>::WineList(const WineList<type> &list)
     while(temp2 != NULL)
     {
         temp->data = temp2->data;
+        temp->quantity = temp2->quantity;
         temp->next = new node<type>();
         temp->next->prev = temp;
 
@@ -274,6 +275,7 @@ WineList<type>& WineList<type>::operator =(const WineList<type>& list)
     while(temp2 != NULL)
     {
         temp->data = temp2->data;
+        temp->quantity = temp2->quantity;
         temp->next = new node<type>();
         temp->next->prev = temp;
 

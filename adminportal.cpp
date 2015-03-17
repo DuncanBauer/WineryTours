@@ -61,6 +61,11 @@ void AdminPortal::on_editList_clicked()
         connect(w, SIGNAL(changeSuccess()), this, SLOT(RereadList()));
         w->show();
     }
+    else
+    {
+        responseWindow* w = new responseWindow(NULL, "Error", "Must select a winery to edit its wine list");
+        w->show();
+    }
 }
 
 void AdminPortal::RereadList()
@@ -78,7 +83,7 @@ void AdminPortal::on_pushButton_clicked()
 
 void AdminPortal::on_addWinery_clicked()
 {
-    if(ui->pendingWineries->currentItem() != NULL)
+    if(ui->pendingWineries->currentItem() != NULL && ui->pendingWineries->currentRow() == 0)
     {
         unsigned int index = ui->pendingWineries->currentRow();
         Winery temp = pendingWineries.operator [](index);
@@ -104,5 +109,15 @@ void AdminPortal::on_addWinery_clicked()
         ReadFile("pending.txt");
         SetListItems();
         SetPendingListItems();
+    }
+    else if(ui->pendingWineries->currentItem() == NULL)
+    {
+        responseWindow* w = new responseWindow(NULL, "Error", "Must select a winery to add to the list of wineries");
+        w->show();
+    }
+    else if(ui->pendingWineries->currentRow() != 0)
+    {
+        responseWindow* w = new responseWindow(NULL, "Error", "Please select the first winery in the pending winery list");
+        w->show();
     }
 }

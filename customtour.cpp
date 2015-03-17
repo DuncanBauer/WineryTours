@@ -15,6 +15,8 @@ CustomTour::CustomTour(QWidget *parent, vector<Winery> WineryVector) :
     ui(new Ui::CustomTour)
 {
     ui->setupUi(this);
+    this->setWindowTitle("RapeGrape Winery Tours");
+
     WineryList = WineryVector;
 
     ui->wineTable->setShowGrid(true);
@@ -29,9 +31,6 @@ CustomTour::CustomTour(QWidget *parent, vector<Winery> WineryVector) :
     ui->userList->setRowCount(0);
     ui->userList->setEditTriggers(QAbstractItemView::NoEditTriggers);
     this->SetUserListItems();
-
-
-   // SetListItems();
 }
 
 CustomTour::~CustomTour()
@@ -55,7 +54,7 @@ void CustomTour::SetListItems()
         Winery item = WineryList.operator [](index);
 
         QStringList itemList;
-        QString itemDistance = QString::number(item.getDistanceToMom());
+        QString itemDistance = QString::number(item.getDistanceToMom()) + " miles";
         itemList << item.getName() << itemDistance;
 
         for(int column = 0; column < 2; column++)
@@ -109,6 +108,11 @@ void CustomTour::on_pushButton_clicked()
         tourWindow->show();
         this->close();
     }
+    else
+    {
+        responseWindow* w = new responseWindow(NULL, "Error", "You have yet to plan your tour");
+        w->show();
+    }
 }
 
 void CustomTour::on_add_clicked()
@@ -131,6 +135,11 @@ void CustomTour::on_add_clicked()
         SetListItems();
         SetUserListItems();
     }
+    else
+    {
+        responseWindow* w = new responseWindow(NULL, "Error", "Must select a winery to add to your tour");
+        w->show();
+    }
 }
 
 void CustomTour::on_remove_clicked()
@@ -152,6 +161,11 @@ void CustomTour::on_remove_clicked()
 
         SetListItems();
         SetUserListItems();
+    }
+    else
+    {
+        responseWindow* w = new responseWindow(NULL, "Error", "Must select a winery to remove from your tour");
+        w->show();
     }
 }
 

@@ -54,6 +54,11 @@ void newWine::on_add_clicked()
         WineryList = ReadFile("wineries.txt");
         this->SetTableItems();
     }
+    else
+    {
+        responseWindow* w = new responseWindow(NULL, "Error", "Must fill out all information about the wine");
+        w->show();
+    }
 }
 
 void newWine::ClearTable()
@@ -135,37 +140,38 @@ void newWine::on_delete_2_clicked()
             w->show();
         }
     }
+    else
+    {
+        responseWindow* w = new responseWindow(NULL, "Error", "Must select a wine to delete");
+        w->show();
+    }
 }
 
 void newWine::on_edit_clicked()
 {
-    if(ui->tableWidget->currentItem() != NULL)
+    if(ui->tableWidget->currentItem() != NULL && (ui->price->text().toFloat() > 0 && ui->price->text().toFloat() <= 1000000))
     {
         int index                = ui->tableWidget->currentRow();
         Winery* tempWinery       = &WineryList.operator [](wineryIndex);
         WineList<Wine>* tempList = tempWinery->getWineList();
         Wine* tempWine           = tempList->GetData(index);
 
-        if(ui->name->text() != "")
-        {
-            tempWine->SetName(ui->name->text());
-        }
-        if(ui->year->text().toInt() > 0 && ui->year->text().toInt() <= 9999)
-        {
-            tempWine->SetYear(ui->year->text().toInt());
-        }
-        if(ui->price->text().toFloat() > 0 && ui->price->text().toFloat() <= 1000000)
-        {
-            tempWine->SetPrice(ui->price->text().toFloat());
-        }
-
-        ui->name->clear();
-        ui->year->clear();
+        tempWine->SetPrice(ui->price->text().toFloat());
         ui->price->clear();
 
         WriteFile("wineries.txt", &WineryList);
         emit changeSuccess();
         WineryList = ReadFile("wineries.txt");
         this->SetTableItems();
+    }
+    else if(ui->tableWidget->currentItem() == NULL)
+    {
+        responseWindow* w = new responseWindow(NULL, "Error", "Must select a wine to edit");
+        w->show();
+    }
+    else if(!(ui->price->text().toFloat() > 0 && ui->price->text().toFloat() <= 1000000))
+    {
+        responseWindow* w = new responseWindow(NULL, "Error", "Please enter a valid price");
+        w->show();
     }
 }

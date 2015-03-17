@@ -1,6 +1,7 @@
 #include "intour.h"
 #include "ui_intour.h"
 #include "mainwindow.h"
+#include "end.h"
 
 inTour::inTour(QWidget *parent) :QWidget(parent),
 ui(new Ui::inTour)
@@ -49,6 +50,12 @@ inTour::inTour(QWidget *parent, vector<Winery> WineryVector) :
     ui->winesPurched->setRowCount(0);
     ui->winesPurched->setEditTriggers(QAbstractItemView::NoEditTriggers);
     this->SetWinesPurched();
+
+    if(currentWineryIndex == WineryList.size() - 1)
+    {
+        responseWindow* w = new responseWindow(NULL, "Enjoy", "This is the last stop on your tour");
+        w->show();
+    }
 }
 
 inTour::~inTour()
@@ -61,6 +68,11 @@ void inTour::on_nextButton_clicked()
     if(currentWineryIndex < WineryList.size() - 1)
     {
         currentWineryIndex++;
+        if(currentWineryIndex == WineryList.size() - 1)
+        {
+            responseWindow* w = new responseWindow(NULL, "Enjoy", "This is the last stop on your tour");
+            w->show();
+        }
         currentWinery = WineryList.operator [](currentWineryIndex);
 
         // I don't know why this works, but it does, so don't touch it
@@ -83,7 +95,7 @@ void inTour::on_nextButton_clicked()
     }
     else
     {
-        MainWindow* w = new MainWindow();
+        end* w = new end(NULL, WineryList, winesPurchased, distTraveled, totalSpent);
         w->show();
         this->close();
     }
@@ -194,7 +206,7 @@ void inTour::SetWinesPurched()
 
 void inTour::on_purchWineButton_clicked()
 {
-    if(ui->winesAvail->currentItem() != NULL)
+    if(ui->winesAvail->currentItem() != NULL && ui->spinBox->text().toInt() != 0)
     {
         int wineIndex = ui->winesAvail->currentRow();
         WineList<Wine>* tempList = currentWinery.getWineList();
@@ -217,5 +229,15 @@ void inTour::on_purchWineButton_clicked()
 
         ui->totalSpent->setText(QString::number(totalSpent) + " dollars");
         ui->totalSpent->setAlignment(Qt::AlignCenter);
+    }
+    else if(ui->winesAvail->currentItem() == NULL)
+    {
+        responseWindow* w = new responseWindow(NULL, "Error", "Must select a wine to purchase");
+        w->show();
+    }
+    else if(ui->spinBox->text().toInt() == 0)
+    {
+        responseWindow* w = new responseWindow(NULL, "Error", "You tried to purchase 0 bottles of wine");
+        w->show();
     }
 }

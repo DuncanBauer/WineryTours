@@ -21,12 +21,9 @@ shortTour::shortTour(QWidget *parent, vector<Winery> WineryVector) :
     ui->customTable->setColumnCount(2);
     ui->customTable->setRowCount(0);
     ui->customTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
-   // this->SetListItems();
 
     int row = 0;
     unsigned int index = 0;
-    //Winery tempWinery;       // = WineryList.operator [](index);
-    //WineList<Wine>* tempList = tempWinery.getWineList();
 
     for(index = 0; index < UserWineryList.size(); index++)
     {
@@ -38,7 +35,7 @@ shortTour::shortTour(QWidget *parent, vector<Winery> WineryVector) :
         Winery item = UserWineryList.operator [](index);
 
         QStringList itemList;
-        QString itemDistance = QString::number(item.getDistanceToMom());
+        QString itemDistance = QString::number(item.getDistanceToMom()) + " miles";
         itemList << item.getName() << itemDistance;
 
         for(int column = 0; column < 2; column++)
@@ -50,12 +47,9 @@ shortTour::shortTour(QWidget *parent, vector<Winery> WineryVector) :
     }
     row = 0;
 
-
     QStringList headers;
     headers << "Winery Name" << "Distance to Mom";
     ui->customTable->setHorizontalHeaderLabels(headers);
-
-
 }
 
 shortTour::~shortTour()
@@ -86,6 +80,21 @@ void shortTour::on_pushButton_clicked()
         tourWindow = new inTour(NULL, temp);
         tourWindow->show();
         this->close();
+    }
+    else if(ui->spinBox->text().toInt() > UserWineryList.size())
+    {
+        responseWindow* w = new responseWindow(NULL, "Error", "We do not have that many wineries affiliated with us");
+        w->show();
+    }
+    else if(ui->spinBox->text().toInt() == 0)
+    {
+        responseWindow* w = new responseWindow(NULL, "Error", "You don't want to visit any wineries?");
+        w->show();
+    }
+    else
+    {
+        responseWindow* w = new responseWindow(NULL, "Error", "Must select a winery to begin your tour from");
+        w->show();
     }
 }
 
