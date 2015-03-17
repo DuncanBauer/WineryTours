@@ -2,7 +2,6 @@
 #include <QMessageBox>
 #include <QTextStream>
 #include <qdir.h>
-#include <windows.h>
 #include "Winery.h"
 
 
