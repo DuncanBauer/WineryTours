@@ -17,6 +17,7 @@ inTour::inTour(QWidget *parent, vector<Winery> WineryVector) :
     WineryList = WineryVector;
     numOfWineries = WineryList.size();
     currentWineryIndex = 0;
+   // currentWinery = new Winery;
     currentWinery = &WineryVector.operator [](currentWineryIndex);
 
     winesPurchased = new WineList<Wine>();
@@ -135,7 +136,8 @@ void inTour::SetWinesPurched()
                  ui->winesPurched->setRowCount(row + 1);
              }
 
-             Wine* item = tempList->operator [](index);
+             Wine* item2 = tempList->operator [](index);
+             Wine item = *item2;
              node<Wine>* tempNode = tempList->GetHead();
 
              for(int jndex = 0; jndex < index; jndex++)
@@ -144,9 +146,9 @@ void inTour::SetWinesPurched()
              }
 
              QStringList itemList;
-             QString     itemYear     = QString::number(item->GetYear());
+             QString     itemYear     = QString::number(item.GetYear());
              QString     itemQuantity = QString::number(tempNode->quantity);
-             itemList << item->GetName() << itemYear << itemQuantity;
+             itemList << item.GetName() << itemYear << itemQuantity;
 
              for(int column = 0; column < 3; column++)
              {
@@ -166,16 +168,21 @@ void inTour::SetWinesPurched()
 
 void inTour::on_purchWineButton_clicked()
 {
+    //int index =0;
     if(ui->winesAvail->currentItem() != NULL)
     {
-//        int wineIndex = ui->winesAvail->currentRow();
-//        qDebug() << wineIndex;
+        int wineIndex = ui->winesAvail->currentRow();
+
         WineList<Wine>* tempList = currentWinery->getWineList();
-        Wine* tempWine = tempList->operator [](ui->winesAvail->currentRow());
+        Wine* tempWine = tempList->operator [](wineIndex);
+        Wine item = *tempWine;
+        qDebug() << ui->winesAvail->currentRow();
 
         for(int index = 0; index < ui->spinBox->text().toInt(); index++)
         {
-            winesPurchased->Add(*tempWine);
+            qDebug() <<"spin   "<< ui->spinBox->text().toInt();
+            winesPurchased->Add(item);
+            item.Print();
         }
 
         SetWinesPurched();
