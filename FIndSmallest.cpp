@@ -55,7 +55,6 @@ vector<Winery> SortVector(vector<Winery> WineryVector)
                     temp = &WineryVector.operator [](index);
                 }
             }
-            qDebug() << distToNext;
             sorted.push_back(*temp);
             temp->setVisitable(false);
             distToNext = 100;

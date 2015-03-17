@@ -26,7 +26,7 @@ void adminLogin::on_login_clicked()
 {
     QString password = ui->password->text();
 
-    if(password == "holyJamoli")
+    if(password == "EroticHouseCat")
     {
         AdminPortal* w = new AdminPortal();
         w->show();

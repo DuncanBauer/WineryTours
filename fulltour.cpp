@@ -14,6 +14,7 @@ fullTour::fullTour(QWidget *parent, vector<Winery> tempWineryVector) :
     ui(new Ui::fullTour)
 {
     ui->setupUi(this);
+    this->setWindowTitle("RapeGrape Winery Tours");
     WineryVector = SortVector(tempWineryVector);
 
     ui->tableWidget->setShowGrid(true);
