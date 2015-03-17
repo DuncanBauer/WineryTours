@@ -2,29 +2,32 @@
 #define FULLTOUR_H
 
 #include <QWidget>
-#include "intour.h"
-#include <vector>
 #include "Winery.h"
 
+vector<Winery> SortVector(vector<Winery> WineryVector);
+
 namespace Ui {
-class FullTour;
+class fullTour;
 }
 
-class FullTour : public QWidget
+class fullTour : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit FullTour(QWidget *parent = 0);
-    explicit FullTour(QWidget *parent, vector<Winery> WineryVector);
-    ~FullTour();
+    explicit fullTour(QWidget *parent = 0);
+    explicit fullTour(QWidget *parent, vector<Winery> tempWineryVector);
+    ~fullTour();
 
 private slots:
+    void on_back_clicked();
+
     void on_pushButton_clicked();
 
 private:
-    Ui::FullTour *ui;
-    inTour* tourWindow;
+    void SetListItems();
+    Ui::fullTour *ui;
+    vector<Winery> WineryVector;
 };
 
 #endif // FULLTOUR_H

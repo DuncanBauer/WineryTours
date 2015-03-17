@@ -34,3 +34,10 @@ void MainWindow::on_Admin_clicked()
     login->show();
     this->close();
 }
+
+void MainWindow::on_Full_clicked()
+{
+    fullWindow = new fullTour(NULL, WineryVector);
+    fullWindow->show();
+    this->close();
+}

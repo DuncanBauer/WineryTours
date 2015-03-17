@@ -24,7 +24,8 @@ SOURCES += adminportal.cpp \
     responsewindow.cpp \
     adminlogin.cpp \
     instructions.cpp \
-    end.cpp
+    end.cpp \
+    fulltour.cpp
 
 HEADERS  += mainwindow.h \
     adminportal.h \
@@ -38,7 +39,8 @@ HEADERS  += mainwindow.h \
     responsewindow.h \
     adminlogin.h \
     instructions.h \
-    end.h
+    end.h \
+    fulltour.h
 
 FORMS    += adminportal.ui \
     mainwindow.ui \
@@ -49,6 +51,7 @@ FORMS    += adminportal.ui \
     responsewindow.ui \
     adminlogin.ui \
     instructions.ui \
-    end.ui
+    end.ui \
+    fulltour.ui
 
 RESOURCES += \

@@ -42,11 +42,14 @@ private slots:
 
     void on_Admin_clicked();
 
+    void on_Full_clicked();
+
 private:
     Ui::MainWindow *ui;
     vector<Winery> WineryVector;
     shortTour*     shortWindow;
     CustomTour*    customWindow;
+    fullTour*      fullWindow;
     adminLogin*    login;
 };
 
