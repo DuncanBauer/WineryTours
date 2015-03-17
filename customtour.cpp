@@ -39,20 +39,10 @@ CustomTour::~CustomTour()
 
 void CustomTour::SetListItems()
 {
-//    ui->listWidget->clear();
-//    Winery temp;
-//    for(unsigned int i = 0; i < WineryList.size(); i++)
-//    {
-//        temp = WineryList.operator [](i);
-//        ui->listWidget->addItem(temp.getName()); //temp.name;
-//    }
-
+    ui->wineTable->clear();
 
     int row = 0;
     unsigned int index = 0;
-    //Winery tempWinery;       // = WineryList.operator [](index);
-    //WineList<Wine>* tempList = tempWinery.getWineList();
-
     for(index = 0; index < WineryList.size(); index++)
     {
         if(ui->wineTable->rowCount() < row + 1)
@@ -75,19 +65,14 @@ void CustomTour::SetListItems()
     }
     row = 0;
 
-
     QStringList headers;
     headers << "Winery Name" << "Distance to Mom";
     ui->wineTable->setHorizontalHeaderLabels(headers);
-
-
-
 }
 
 void CustomTour::SetUserListItems()
 {
     ui->userList->clear();
-   // Winery temp;
     int row = 0;
     for(unsigned int i = 0; i < UserWineryList.size(); i++)
     {
@@ -107,11 +92,7 @@ void CustomTour::SetUserListItems()
             ui->userList->setItem(row, column, newItem);
         }
         row++;
-
-       // temp = UserWineryList.operator [](i);
-       // ui->userList->addItem(temp.getName()); //temp.name;
     }
-
 
     QStringList headers;
     headers << "Winery Name" << "Distance to Mom";

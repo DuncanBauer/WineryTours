@@ -17,13 +17,17 @@ inTour::inTour(QWidget *parent, vector<Winery> WineryVector) :
     WineryList = WineryVector;
     numOfWineries = WineryList.size();
     currentWineryIndex = 0;
+<<<<<<< HEAD
    // currentWinery = new Winery;
     currentWinery = &WineryVector.operator [](currentWineryIndex);
+=======
+    currentWinery = WineryVector.operator [](currentWineryIndex);
+>>>>>>> ce9f8714b0316baa0fc35ce8c7966f4acdc9b829
 
     winesPurchased = new WineList<Wine>();
     winesPurchased->SetCart(true);
 
-    ui->winaryName->setText(currentWinery->getName());
+    ui->winaryName->setText(currentWinery.getName());
     ui->winaryName->setAlignment(Qt::AlignCenter);
 
     ui->winesAvail->setShowGrid(true);
@@ -49,8 +53,8 @@ void inTour::on_nextButton_clicked()
     if(currentWineryIndex < WineryList.size() - 1)
     {
         currentWineryIndex++;
-        currentWinery = &WineryList.operator [](currentWineryIndex);
-        ui->winaryName->setText(currentWinery->getName());
+        currentWinery = WineryList.operator [](currentWineryIndex);
+        ui->winaryName->setText(currentWinery.getName());
         ui->winaryName->setAlignment(Qt::AlignCenter);
         SetAvailWines();
     }
@@ -172,6 +176,7 @@ void inTour::on_purchWineButton_clicked()
     if(ui->winesAvail->currentItem() != NULL)
     {
         int wineIndex = ui->winesAvail->currentRow();
+<<<<<<< HEAD
 
         WineList<Wine>* tempList = currentWinery->getWineList();
         Wine* tempWine = tempList->operator [](wineIndex);
@@ -183,7 +188,19 @@ void inTour::on_purchWineButton_clicked()
             qDebug() <<"spin   "<< ui->spinBox->text().toInt();
             winesPurchased->Add(item);
             item.Print();
+=======
+        WineList<Wine>* tempList = currentWinery.getWineList();
+
+        Wine* temp = tempList->operator [](wineIndex);
+        Wine tempWine = *temp;
+
+        for(int index = 0; index < ui->spinBox->text().toInt(); index++)
+        {
+            winesPurchased->Add(tempWine);
+            tempWine.Print();
+>>>>>>> ce9f8714b0316baa0fc35ce8c7966f4acdc9b829
         }
+
 
         SetWinesPurched();
     }
