@@ -10,6 +10,8 @@ namespace Ui {
 class CustomTour;
 }
 
+vector<Winery> SortVector(vector<Winery> WineryVector);
+
 class CustomTour : public QWidget
 {
     Q_OBJECT

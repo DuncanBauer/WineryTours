@@ -15,7 +15,7 @@ instructions::instructions(QWidget *parent, QString title, QString message) :
     ui->setupUi(this);
     this->setWindowTitle(title);
 
-    ui->label->sette(message);
+    ui->label->setText(message);
     ui->label->setWordWrap(true);
     ui->label->setAlignment(Qt::AlignCenter);
 }

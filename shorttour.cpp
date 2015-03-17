@@ -62,19 +62,17 @@ void shortTour::on_pushButton_clicked()
     unsigned int numOfWineries = ui->spinBox->text().toInt();
     if(ui->customTable->currentItem() != NULL && (numOfWineries <= UserWineryList.size() && numOfWineries != 0))
     {
-        int wineryNum;
-        int itemIndex = ui->customTable->currentRow();
-
-        Winery tempWinery = UserWineryList.operator [](itemIndex);
         vector<Winery> temp;
-        temp.push_back(tempWinery);
+        int itemIndex = ui->customTable->currentRow();
+        Winery* tempWinery = &UserWineryList.operator [](itemIndex);
+        temp.push_back(*tempWinery);
+        tempWinery->setVisitable(false);
 
         for(unsigned int index = 0; index < numOfWineries - 1; index++)
         {
-            wineryNum = tempWinery.getClosestNeighbor(UserWineryList);
-            temp.push_back(UserWineryList.operator [](wineryNum));
-            tempWinery = UserWineryList.operator [](wineryNum);
-            tempWinery.setVisitable(false);
+            tempWinery = &UserWineryList.operator [](tempWinery->getClosestNeighbor(UserWineryList));
+            tempWinery->setVisitable(false);
+            temp.push_back(*tempWinery);
         }
 
         tourWindow = new inTour(NULL, temp);

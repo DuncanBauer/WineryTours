@@ -2,7 +2,6 @@
 #include <QMessageBox>
 #include <QTextStream>
 #include <qdir.h>
-//#include <windows.h>
 #include "Winery.h"
 
 
@@ -20,6 +19,49 @@ int FindClosest(vector<float> myV, int& wineryNum)
         }
     }
     return smallest;
+}
+
+vector<Winery> SortVector(vector<Winery> WineryVector)
+{
+    vector<Winery> sorted;
+    float minDistToMom = 100;
+    float distToNext   = 100;
+    Winery* temp = NULL;
+    Winery  tempWinery;
+
+    for(unsigned int index = 0; index < WineryVector.size(); index++)
+    {
+        if(minDistToMom > WineryVector.operator [](index).getDistanceToMom())
+        {
+            minDistToMom = WineryVector.operator [](index).getDistanceToMom();
+            temp         = &WineryVector.operator [](index);
+        }
+    }
+    tempWinery = *temp;
+    sorted.push_back(tempWinery);
+    temp->setVisitable(false);
+
+    vector<float>* floatVector = tempWinery.getNeighbors();
+    if(WineryVector.size() > 1)
+    {
+        for(unsigned int kndex = 0; kndex < WineryVector.size() - 1; kndex++)
+        {
+            for(unsigned int index = 0; index < WineryVector.size(); index++)
+            {
+                if(distToNext > floatVector->operator [](WineryVector.operator [](index).getWineryNum() - 1)
+                   && WineryVector.operator [](index).getVisitable())
+                {
+                    distToNext = floatVector->operator [](WineryVector.operator [](index).getWineryNum() - 1);
+                    temp = &WineryVector.operator [](index);
+                }
+            }
+            qDebug() << distToNext;
+            sorted.push_back(*temp);
+            temp->setVisitable(false);
+            distToNext = 100;
+        }
+    }
+    return sorted;
 }
 
 void ResetAll(vector<Winery> wineryVector)

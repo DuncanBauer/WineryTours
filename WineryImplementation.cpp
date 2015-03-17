@@ -103,18 +103,17 @@ vector<float>* Winery::getNeighbors()
 
 int Winery::getClosestNeighbor(vector<Winery> WineryVector)
 {
-    unsigned int index = 0;
     int wineryIndex    = 0;
-    float smallest     = neighbors.operator [](index);
+    float smallest     = 1000;
     Winery temp;
 
-    for(index = 1; index < neighbors.size(); index++)
+    for(unsigned index = 0; index < neighbors.size(); index++)
     {
         temp = WineryVector.operator [](index);
-        if(temp.getVisitable() && (smallest > neighbors.operator [](index) && neighbors.operator [](index) != 0.0))
+        if(temp.getVisitable() && smallest > neighbors.operator [](index))
         {
             smallest  = neighbors.operator [](index);
-            wineryIndex = index + 1;
+            wineryIndex = temp.getWineryNum() - 1;
         }
     }
     return wineryIndex;

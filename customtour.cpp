@@ -104,6 +104,7 @@ void CustomTour::on_pushButton_clicked()
 {
     if(!UserWineryList.empty())
     {
+        UserWineryList = SortVector(UserWineryList);
         tourWindow = new inTour(NULL, UserWineryList);
         tourWindow->show();
         this->close();
