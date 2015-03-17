@@ -33,30 +33,38 @@ newWine::~newWine()
 
 void newWine::on_add_clicked()
 {
-    if(ui->name->text() != "" && ui->year->text().toInt() > 0 && ui->price->text().toFloat() > 0.0)
+    Winery* tempWinery = &(WineryList.operator [](wineryIndex));
+    if(tempWinery->getWineList()->Size() < 10)
     {
-        Wine newWine;
-        newWine.SetName(ui->name->text());
-        newWine.SetYear(ui->year->text().toInt());
-        newWine.SetPrice(ui->price->text().toFloat());
+        if(ui->name->text() != "" && ui->year->text().toInt() > 0 && ui->price->text().toFloat() > 0.0)
+        {
+            Wine newWine;
+            newWine.SetName(ui->name->text());
+            newWine.SetYear(ui->year->text().toInt());
+            newWine.SetPrice(ui->price->text().toFloat());
 
-        ui->name->clear();
-        ui->year->clear();
-        ui->price->clear();
+            ui->name->clear();
+            ui->year->clear();
+            ui->price->clear();
 
-        Winery* tempWinery = &(WineryList.operator [](wineryIndex));
-        tempWinery->addWine(newWine);
-        tempWinery->setNumOfWines(tempWinery->getNumOfWines() + 1);
+            tempWinery->addWine(newWine);
+            tempWinery->setNumOfWines(tempWinery->getNumOfWines() + 1);
 
-        WriteFile("wineries.txt", &WineryList);
-        emit changeSuccess();
+            WriteFile("wineries.txt", &WineryList);
+            emit changeSuccess();
 
-        WineryList = ReadFile("wineries.txt");
-        this->SetTableItems();
+            WineryList = ReadFile("wineries.txt");
+            this->SetTableItems();
+        }
+        else
+        {
+            responseWindow* w = new responseWindow(NULL, "Error", "Must fill out all information about the wine");
+            w->show();
+        }
     }
     else
     {
-        responseWindow* w = new responseWindow(NULL, "Error", "Must fill out all information about the wine");
+        responseWindow* w = new responseWindow(NULL, "Error", "This winery already has 10 wines");
         w->show();
     }
 }

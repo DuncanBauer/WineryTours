@@ -96,40 +96,21 @@ WineList<type>::~WineList()
 template <class type>
 void WineList<type>::Add(type newData)
 {
-    node<type>* newNode = new node<type>();
-    newNode->data       = newData;
-    newNode->quantity   = 1;
+    if(size < 10)
+    {
+        node<type>* newNode = new node<type>();
+        newNode->data       = newData;
+        newNode->quantity   = 1;
 
-    if(IsEmpty())
-    {
-        head = newNode;
-        tail = newNode;
-        newNode->next = NULL;
-        newNode->prev = NULL;
-        size++;
-    }
-    else if(!isCart)
-    {
-        tail->next    = newNode;
-        newNode->prev = tail;
-        newNode->next = NULL;
-        tail          = tail->next;
-        size++;
-    }
-    else
-    {
-        node<type>* temp  = head;
-        bool        found = false;
-        while(temp != NULL && !found)
+        if(IsEmpty())
         {
-            if(temp->data == newNode->data)
-            {
-                temp->quantity++;
-                found = true;
-            }
-            temp = temp->next;
+            head = newNode;
+            tail = newNode;
+            newNode->next = NULL;
+            newNode->prev = NULL;
+            size++;
         }
-        if(!found)
+        else if(!isCart)
         {
             tail->next    = newNode;
             newNode->prev = tail;
@@ -139,7 +120,29 @@ void WineList<type>::Add(type newData)
         }
         else
         {
-            delete newNode;
+            node<type>* temp  = head;
+            bool        found = false;
+            while(temp != NULL && !found)
+            {
+                if(temp->data == newNode->data)
+                {
+                    temp->quantity++;
+                    found = true;
+                }
+                temp = temp->next;
+            }
+            if(!found)
+            {
+                tail->next    = newNode;
+                newNode->prev = tail;
+                newNode->next = NULL;
+                tail          = tail->next;
+                size++;
+            }
+            else
+            {
+                delete newNode;
+            }
         }
     }
 }
