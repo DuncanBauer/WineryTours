@@ -86,7 +86,7 @@ void AdminPortal::on_addWinery_clicked()
     if(ui->pendingWineries->currentItem() != NULL && ui->pendingWineries->currentRow() == 0)
     {
         unsigned int index = ui->pendingWineries->currentRow();
-        Winery temp = pendingWineries.operator [](index);
+        Winery       temp  = pendingWineries.operator [](index);
 
         while(index < pendingWineries.size() - 1)
         {

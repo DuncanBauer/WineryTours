@@ -175,13 +175,14 @@ void WriteFile(QString fileName, vector<Winery>* WineryVector)
         for(unsigned int index = 0; index < WineryVector->size(); index++)
         {
             currentWinery = &WineryVector->operator [](index);
-            wineryOutput << currentWinery->getName()      << endl
-                         << currentWinery->getWineryNum() << endl
-                         << WineryVector->size()          << endl;
+            wineryOutput << currentWinery->getName()              << endl
+                         << currentWinery->getWineryNum()         << endl
+                         << currentWinery->getNeighbors()->size() << endl;
 
-            for(unsigned int jndex = 0; jndex < WineryVector->size(); jndex++)
+            vector<float>* tempVector = currentWinery->getNeighbors();
+            for(unsigned int jndex = 0; jndex < tempVector->size(); jndex++)
             {
-                wineryOutput << currentWinery->getNeighbors()->operator [](jndex) << endl;
+                wineryOutput << tempVector->operator [](jndex) << endl;
             }
 
             wineryOutput << currentWinery->getDistanceToMom() << endl
