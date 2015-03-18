@@ -313,11 +313,13 @@ template <class type>
 type* WineList<type>::GetData(int index)
 {
     node<type>* temp = head;
-    for(int jndex = 0; jndex < index; index++)
+    // i am so dum
+    for(int jndex = 0; jndex < index; jndex++)
     {
         temp = temp->next;
     }
-    return &temp->data;
+
+    return &(temp->data);
 }
 
 #endif // LIST_H

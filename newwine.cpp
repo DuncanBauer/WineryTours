@@ -161,6 +161,7 @@ void newWine::on_edit_clicked()
     {
         if(ui->name->text() == "" && ui->year->text() == "")
         {
+            // im so so dumb
             int index                = ui->tableWidget->currentRow();
             Winery* tempWinery       = &WineryList.operator [](wineryIndex);
             WineList<Wine>* tempList = tempWinery->getWineList();
