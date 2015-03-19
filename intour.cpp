@@ -95,6 +95,7 @@ void inTour::on_nextButton_clicked()
     }
     else
     {
+        distTraveled += currentWinery.getDistanceToMom();
         end* w = new end(NULL, WineryList, winesPurchased, distTraveled, totalSpent);
         w->show();
         this->close();

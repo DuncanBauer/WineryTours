@@ -27,7 +27,6 @@ vector<Winery> SortVector(vector<Winery> WineryVector)
     float minDistToMom = 100;
     float distToNext   = 100;
     Winery* temp = NULL;
-    Winery  tempWinery;
 
     for(unsigned int index = 0; index < WineryVector.size(); index++)
     {
@@ -37,28 +36,25 @@ vector<Winery> SortVector(vector<Winery> WineryVector)
             temp         = &WineryVector.operator [](index);
         }
     }
-    tempWinery = *temp;
-    sorted.push_back(tempWinery);
+    sorted.push_back(*temp);
     temp->setVisitable(false);
 
-    vector<float>* floatVector = tempWinery.getNeighbors();
-    if(WineryVector.size() > 1)
+    vector<float>* floatVector;
+    for(unsigned int kndex = 0; kndex < WineryVector.size() - 1; kndex++)
     {
-        for(unsigned int kndex = 0; kndex < WineryVector.size() - 1; kndex++)
+        floatVector = temp->getNeighbors();
+        for(unsigned int index = 0; index < WineryVector.size(); index++)
         {
-            for(unsigned int index = 0; index < WineryVector.size(); index++)
+            if(distToNext > floatVector->operator [](WineryVector.operator [](index).getWineryNum() - 1)
+               && WineryVector.operator [](index).getVisitable())
             {
-                if(distToNext > floatVector->operator [](WineryVector.operator [](index).getWineryNum() - 1)
-                   && WineryVector.operator [](index).getVisitable())
-                {
-                    distToNext = floatVector->operator [](WineryVector.operator [](index).getWineryNum() - 1);
-                    temp = &WineryVector.operator [](index);
-                }
+                distToNext = floatVector->operator [](WineryVector.operator [](index).getWineryNum() - 1);
+                temp = &WineryVector.operator [](index);
             }
-            sorted.push_back(*temp);
-            temp->setVisitable(false);
-            distToNext = 100;
         }
+        sorted.push_back(*temp);
+        temp->setVisitable(false);
+        distToNext = 100;
     }
     return sorted;
 }
